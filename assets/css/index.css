@@ -1,0 +1,151 @@
+a {
+	text-decoration: none;
+}
+ul li {
+	list-style: none;
+}
+.container-fluid {
+	padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+	font-family: "Kanit", sans-serif;
+}
+.top_bar {
+	border-bottom: 1px solid rgb(221, 221, 221);
+	font-size: 0.8rem;
+}
+
+.navbar span.text-primary {
+  margin-left: -6px;
+}
+.navbar a.cart {
+	width: 2.7rem;
+	height: 2.7rem;
+}
+.navbar a.cart > span.position-absolute {
+	font-size: 0.85rem;
+	font-weight: 500;
+	top: 1px;
+	right: -20px;
+	padding: 4px 6px;
+}
+
+.navbar .dropdown .dropdown-toggle img {
+	width: 3.4rem;
+	height: 3.4rem;
+}
+
+.banner img {
+	max-height: 500px;
+	min-height: 250px;
+	object-fit: cover;
+	overflow: hidden;
+}
+
+.service .card {
+	transition: all 0.2s ease-in-out;
+}
+
+.service .card:hover {
+	background-color: #f8f9fa !important;
+}
+
+.service .card i {
+	transition: all 0.7s ease-in-out;
+}
+
+.service .card:hover i {
+	transform: scale(1.2);
+}
+.promotion_product .card a,
+.best_product .card a,
+.new_product .card a {
+	overflow: hidden;
+}
+.promotion_product .card a img,
+.best_product .card a img,
+.new_product .card a img {
+	height: 19rem;
+	min-height: 13rem;
+	object-fit: cover;
+	overflow: hidden;
+	transition: all 0.6s ease-in-out;
+}
+
+.promotion_product .card:hover a img,
+.best_product .card:hover a img,
+.new_product .card:hover a img {
+	transform: scale(1.1);
+}
+
+.promotion_product .card .position-absolute,
+.best_product .card .position-absolute,
+.new_product .card .position-absolute {
+	border-radius: 0;
+	font-size: 1rem;
+	font-weight: 500;
+	top: 0;
+	right: 0;
+}
+
+.promotion_product .header h2,
+.best_product .header h2,
+.new_product .header h2{
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.promotion_product .header h2::before,
+.best_product .header h2::before,
+.new_product .header h2::before {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	content: "";
+	background-color: #0167f3;
+	height: 3px;
+	width: 70px;
+	margin-left: -35px;
+}
+.new_product .header h2::before {
+  background-color: #DC3545;
+}
+.best_product .header h2::before {
+  background-color: #333;
+}
+
+#BackToTop {
+  display: inline-block;
+  background-color: #0167f3;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 3px;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  transition: background-color .3s, 
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10000;
+}
+
+#BackToTop i {
+  position:absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: .8;
+}
+#BackToTop:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+#BackToTop.show {
+  opacity: .6;
+  visibility: visible;
+}

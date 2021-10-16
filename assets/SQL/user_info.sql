@@ -1,0 +1,19 @@
+-- CREATE TABLE `shopshop`.`user_info` (
+--   `id_info` INT(8) NOT NULL AUTO_INCREMENT,
+--   `id_user` INT(8) NOT NULL,
+--   `firstname` VARCHAR(150) NULL,
+--   `lastname` VARCHAR(150) NULL,
+--   `dob` DATE NULL,
+--   `gender` VARCHAR(20) NULL,
+--   `house` VARCHAR(50) NULL,
+--   `moo` VARCHAR(50) NULL,
+--   `road` VARCHAR(100) NULL,
+--   `lane` VARCHAR(60) NULL,
+--   `tambon` INT(5) NULL,
+--   `amphoe` INT(5) NULL,
+--   `province` INT(5) NULL,
+--   `postal_zip` INT(6) NULL,
+--   `phone` VARCHAR(13) NULL,
+--   `photo` VARCHAR(255) NULL,
+--   PRIMARY KEY (`id_info`)
+-- ) ENGINE = InnoDB;

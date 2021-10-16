@@ -1,0 +1,90 @@
+a {
+	text-decoration: none;
+}
+ul li {
+	list-style: none;
+}
+.container-fluid {
+	padding: 0;
+}
+html {
+	scroll-behavior: smooth;
+}
+body {
+	font-family: "Kanit", sans-serif;
+}
+.top_bar {
+	border-bottom: 1px solid rgb(221, 221, 221);
+	font-size: 0.8rem;
+}
+
+.navbar span.text-primary {
+	margin-left: -6px;
+}
+.navbar a.cart {
+	width: 2.7rem;
+	height: 2.7rem;
+}
+.navbar a.cart > span.position-absolute {
+	font-size: 0.85rem;
+	font-weight: 500;
+	top: 1px;
+	right: -20px;
+	padding: 4px 6px;
+}
+
+.navbar .dropdown .dropdown-toggle img {
+	width: 3.4rem;
+	height: 3.4rem;
+}
+
+#BackToTop {
+	display: inline-block;
+	background-color: #0167f3;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	border-radius: 3px;
+	position: fixed;
+	bottom: 25px;
+	right: 25px;
+	transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+	opacity: 0;
+	visibility: hidden;
+	z-index: 10000;
+}
+
+#BackToTop i {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	opacity: 0.8;
+}
+#BackToTop:hover {
+	cursor: pointer;
+	background-color: #333;
+}
+#BackToTop.show {
+	opacity: 0.6;
+	visibility: visible;
+}
+
+#imgControl,
+#imgControl #imgUpload {
+	margin: 0;
+	max-width: 320px;
+	max-height: 320px;
+}
+#imgControl #imgUpload {
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
+	overflow: hidden;
+}
+@media (max-width: 450px) {
+	#imgControl #imgUpload {
+		max-width: 180px;
+		max-height: 180px;
+	}
+}
