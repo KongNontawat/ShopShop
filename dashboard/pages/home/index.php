@@ -16,23 +16,128 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
   <!-- Style -->
-    <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
   <link rel="stylesheet" href="../../assets/css/index.css">
   <title>Dashboard ShopShop</title>
 </head>
 
 <body class="bg-light">
+  <!-- Loading -->
+  <?php include '../components/loading.php'; ?>
   <!-- Navbar -->
-  <?php include '../components/navbar.php';?>
+  <?php include '../components/navbar.php'; ?>
 
   <!-- Sidebar OffCanvas -->
-  <?php include '../components/sidebar.php';?>
+  <?php include '../components/sidebar.php'; ?>
 
   <!-- Main -->
   <main class="mt-5 pt-3">
-    <div class="container">
-      
-    </div>
+    <div class="container-fluid px-2 px-sm-3 px-lg-4">
+
+      <section class="content-header py-3">
+        <div class="row mx-0 mb-2 justify-content-between">
+          <div class="col-sm-6 px-lg-0">
+            <h1 class="m-0 fw-normal">หน้าแรก</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6 px-lg-0">
+            <ol class="breadcrumb float-sm-end mt-2">
+              <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </section>
+
+      <section class="content">
+        <div class="row m-0">
+          <div class="col-sm-6 col-md-3 px-lg-1">
+            <!-- small box -->
+            <div class="card text-white bg-primary mb-3 mx-auto">
+              <div class="card-body d-flex justify-content-between">
+                <div class="text ">
+                  <h4 class="card-title">1,500</h4>
+                  <p class="card-text">Order</p>
+                </div>
+                <div class="card-icon">
+                  <i class="fas fa-cart-arrow-down display-4"></i>
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                <a href="#!" class="text-white fw-light">
+                  <span>ดูทั้งหมด</span>
+                  <span><i class="fas fa-chevron-right"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-sm-6 col-md-3 px-lg-1">
+            <!-- small box -->
+            <div class="card text-white bg-success mb-3 mx-auto">
+              <div class="card-body d-flex justify-content-between">
+                <div class="text ">
+                  <h4 class="card-title">1,500</h4>
+                  <p class="card-text">Order</p>
+                </div>
+                <div class="card-icon">
+                  <i class="fas fa-cart-arrow-down display-4"></i>
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                <a href="#!" class="text-white fw-light">
+                  <span>ดูทั้งหมด</span>
+                  <span><i class="fas fa-chevron-right"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-sm-6 col-md-3 px-lg-1">
+            <!-- small box -->
+            <div class="card text-white bg-warning mb-3 mx-auto">
+              <div class="card-body d-flex justify-content-between">
+                <div class="text ">
+                  <h4 class="card-title">1,500</h4>
+                  <p class="card-text">Order</p>
+                </div>
+                <div class="card-icon">
+                  <i class="fas fa-cart-arrow-down display-4"></i>
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                <a href="#!" class="text-white fw-light">
+                  <span>ดูทั้งหมด</span>
+                  <span><i class="fas fa-chevron-right"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-sm-6 col-md-3 px-lg-1">
+            <!-- small box -->
+            <div class="card text-white bg-danger mb-3 mx-auto">
+              <div class="card-body d-flex justify-content-between">
+                <div class="text ">
+                  <h4 class="card-title">1,500</h4>
+                  <p class="card-text">Order</p>
+                </div>
+                <div class="card-icon">
+                  <i class="fas fa-cart-arrow-down display-4"></i>
+                </div>
+              </div>
+              <div class="card-footer text-center">
+                <a href="#!" class="text-white fw-light">
+                  <span>ดูทั้งหมด</span>
+                  <span><i class="fas fa-chevron-right"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+    </section>
+    </section>
+
   </main>
 
 
@@ -48,7 +153,6 @@
     $(function() {
       $('#home').addClass('active');
     })
-    
   </script>
 </body>
 

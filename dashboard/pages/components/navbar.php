@@ -4,7 +4,7 @@
       <button class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
         <i class="fas fa-bars"></i>
       </button>
-      <a href="../home/" class="navbar-brand">
+      <a href="../home/" class="navbar-brand d-none d-sm-block">
         <h4><i class="fas fa-shopping-basket text-primary me-1"></i>Shop <span class="text-primary">Shop</span></h4>
       </a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
