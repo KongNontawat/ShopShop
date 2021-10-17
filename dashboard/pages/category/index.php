@@ -16,22 +16,22 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
   <!-- Style -->
-    <link rel="stylesheet" href="../../assets/css/main.css">
-  <link rel="stylesheet" href="../../assets/css/index.css">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/category.css">
   <title>Dashboard ShopShop</title>
 </head>
 
 <body class="bg-light">
   <!-- Navbar -->
-  <?php include '../components/navbar.php';?>
+  <?php include '../components/navbar.php'; ?>
 
   <!-- Sidebar OffCanvas -->
-  <?php include '../components/sidebar.php';?>
+  <?php include '../components/sidebar.php'; ?>
 
   <!-- Main -->
   <main class="mt-5 pt-3">
     <div class="container">
-      
+
     </div>
   </main>
 
@@ -46,9 +46,8 @@
   <script src="../../assets/js/index.js"></script>
   <script>
     $(function() {
-      $('#home').addClass('active');
+      $('#category').addClass('active');
     })
-    
   </script>
 </body>
 
