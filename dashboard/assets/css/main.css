@@ -2,6 +2,8 @@
 	--offcanvas-width: 260px;
 	--topNavbarHeight: 60px;
 }
+
+
 a {
 	text-decoration: none;
 }
@@ -86,6 +88,12 @@ body {
 	transition: all ease-in-out 0.25s;
 	position: absolute;
 	right: 20px;
+}
+
+.content-header,
+.content {
+  width: 100%;
+  margin: 0 auto;
 }
 
 .sidebar-nav nav .sidebar-link[aria-expanded="true"] .right-icon {

@@ -1,7 +1,7 @@
 <!-- Sidebar OffCanvas -->
 <div class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="offcanvasExample">
   <div class="offcanvas-body p-0">
-    <div class="sidebar-header text-center pt-3 d-block d-sm-none">
+    <div class="sidebar-header text-center pt-3 d-block d-lg-none">
       <a href="../home/" class="text-white">
         <h3><i class="fas fa-shopping-basket text-primary me-1"></i>Shop <span class="text-primary">Shop</span></h3>
       </a>
@@ -54,7 +54,7 @@
           </div>
         </li>
         <li class="sidebar-item">
-          <a href="#!" class="nav-link sidebar-link ps-4" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <a href="#!" id="test" class="nav-link sidebar-link ps-4" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <span><i class="fas fa-user-circle me-2"></i></span>
             <span>จัดการบัญขี</span>
             <span class="right-icon text-muted"><i class="fas fa-chevron-down"></i></span>

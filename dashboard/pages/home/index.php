@@ -31,7 +31,7 @@
   <?php include '../components/sidebar.php'; ?>
 
   <!-- Main -->
-  <main class="mt-5 pt-3">
+  <main class="mt-5 pt-4">
     <div class="container-fluid px-2 px-sm-3 px-lg-4">
 
       <section class="content-header py-3">
@@ -41,7 +41,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6 px-lg-0">
             <ol class="breadcrumb float-sm-end mt-2">
-              <li class="breadcrumb-item"><a href="#">หน้าแรก</a></li>
+              <li class="breadcrumb-item"><a href="../home/">หน้าแรก</a></li>
               <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
@@ -135,8 +135,7 @@
           </div>
           <!-- ./col -->
         </div>
-    </section>
-    </section>
+      </section>
 
   </main>
 
@@ -149,11 +148,7 @@
   <!-- My Script -->
   <script src="../../assets/js/global_function.js"></script>
   <script src="../../assets/js/index.js"></script>
-  <script>
-    $(function() {
-      $('#home').addClass('active');
-    })
-  </script>
+
 </body>
 
 </html>

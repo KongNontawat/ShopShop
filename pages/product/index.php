@@ -33,10 +33,7 @@
           <li class="breadcrumb-item"><a href="../home/">หน้าหลัก</a></li>
           <li class="breadcrumb-item active" aria-current="page">สินค้าทั้งหมด</li>
         </ol>
-        <!-- <div class="form-check form-switch d-flex flex-column align-items-center justify-content-center">
-          <input class="form-check-input m-0 p-0" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-          <label class="form-check-label" for="flexSwitchCheckDefault"><small>เผยแพร่</small></label>
-        </div> -->
+        
       </nav>
 
       <div class="row">
