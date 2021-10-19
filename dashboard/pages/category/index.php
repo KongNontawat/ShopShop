@@ -17,7 +17,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
   <!-- Style -->
   <link rel="stylesheet" href="../../assets/css/main.css">
-  <link rel="stylesheet" href="../../assets/css/product.css">
+  <link rel="stylesheet" href="../../assets/css/category.css">
   <title>Dashboard ShopShop</title>
 </head>
 
@@ -37,12 +37,12 @@
       <section class="content-header py-3">
         <div class="row mx-0 mb-2 justify-content-between">
           <div class="col-sm-6 px-lg-0">
-            <h1 class="m-0 fw-normal">จัดการสินค้า</h1>
+            <h1 class="m-0 fw-normal">จัดการประเภทสินค้า</h1>
           </div><!-- /.col -->
           <div class="col-sm-6 px-lg-0">
             <ol class="breadcrumb float-sm-end mt-2">
               <li class="breadcrumb-item"><a href="../home/">หน้าแรก</a></li>
-              <li class="breadcrumb-item active">จัดการสินค้า</li>
+              <li class="breadcrumb-item active">จัดการประเภทสินค้า</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -51,9 +51,9 @@
       <section class="content">
         <div class="card shadow-sm">
           <div class="card-header py-3 d-flex justify-content-between flex-wrap flex-sm-nowrap bg-white ">
-            <h5 class="fw-normal m-0">รายการสินค้าทั้งหมด</h5>
+            <h5 class="fw-normal m-0">รายการประเภทสินค้าทั้งหมด</h5>
             <div class="right d-flex align-item-center flex-wrap flex-sm-nowrap">
-              <button type="button" class="btn btn-primary px-2 py-2 me-2 my-2 my-sm-0" style="width: 135px;" data-bs-toggle="modal" data-bs-target="#exampleModal"> + เพิ่มสินค้า</button>
+              <button type="button" class="btn btn-primary px-1 py-2 me-2 my-2 my-sm-0" style="width: 10rem;" data-bs-toggle="modal" data-bs-target="#exampleModal"> + เพิ่มประเภท</button>
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="ค้นหา..." aria-describedby="basic-addon2">
                 <span class="input-group-text bg-white" id="basic-addon2"><i class="fas fa-search"></i></span>
@@ -66,24 +66,18 @@
                 <thead>
                   <tr>
                     <th class="text-center" style="width: 5%;">#</th>
-                    <th style="width: 15%;">รูป</th>
-                    <th style="width: 20%;">ชื่อสินค้า</th>
-                    <th style="width: 18%;">ประเภท</th>
-                    <th style="width: 12%;">ราคา</th>
-                    <th style="width: 10%;">สต๊อก</th>
-                    <th style="width: 10%;">สถานะ</th>
-                    <th style="width: 10%;">จัดการ</th>
+                    <th style="width: 25%;">ประเภทสินค้า</th>
+                    <th style="width: 35%;">คำอธิบาย</th>
+                    <th style="width: 20%;">เพิ่มเมื่อ</th>
+                    <th style="width: 15%;">จัดการ</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <th class="text-center">1</th>
-                    <td><img src="../../../assets/image/default.jpg" alt=""></td>
                     <td>Macbook pro 15</td>
                     <td>Notebook</td>
-                    <td>51,000</td>
-                    <td>50</td>
-                    <td><span class="badge bg-success">เปิดใช้งาน</span></td>
+                    <td>12:05:2021 12:00น</td>
                     <td>
                       <a href="#!" id="btn-edit" class="text-secondary me-2"><i class="fas fa-edit"></i></a>
                       <a href="#!" id="btn-delete" class="text-secondary"><i class="fas fa-trash"></i></a>
@@ -99,7 +93,7 @@
   </main>
 
   <!-- Modal Form Add -->
-  <?php include 'modal_add_product.php'; ?>
+  <?php include 'modal_add_category.php'; ?>
 
   <!-- Bootstrap 5 Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
@@ -107,7 +101,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- My Script -->
   <script src="../../assets/js/global_function.js"></script>
-  <script src="../../assets/js/product.js"></script>
+  <script src="../../assets/js/category.js"></script>
 
 </body>
 

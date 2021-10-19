@@ -38,6 +38,7 @@
           <li class="nav-item"><a href="../news/" class="nav-link">ข่าวสาร</a></li>
           <li class="nav-item"><a href="../about/" class="nav-link">เกี่ยวกับเรา</a></li>
           <li class="nav-item"><a href="../../dashboard/pages/" class="btn btn-outline-dark ms-1 me-2">Dashboard</a></li>
+          <li class="nav-item"><a href="#!" class="btn btn-outline-dark ms-1 me-2" data-bs-target="#modal_login" data-bs-toggle="modal">Login</a></li>
         </ul>
         <ul class="navbar-nav ms-auto mt-4 mt-md-0">
           <li class="nav-item me-3 me-md-3 my-auto d-flex justify-content-center">

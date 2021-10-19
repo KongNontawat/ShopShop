@@ -16,8 +16,6 @@
     </script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-    <!-- Style -->
-    <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css"> -->
     <link rel="stylesheet" href="../../assets/css/profile.css">
     <title>Profile ShopShop</title>
 </head>
@@ -69,10 +67,10 @@
                 <label for="inputLastName" class="form-label">นามสกุล : </label>
                 <input type="text" class="form-control" id="inputLastName">
               </div>
-              
+
               <div class="col-md-6 mb-2">
                 <label for="inputDate" class="form-label">วันเกิด : <small class="text-muted">เดือน / วัน / ปี ค.ศ.</small></label>
-                <input type="text" id="inputDate" onfocus="(this.type='date')" onchange="showDate();" class="form-control" placeholder="เดือน / วัน / ปี ค.ศ."/>
+                <input type="text" id="inputDate" onfocus="(this.type='date')" onchange="showDate();" class="form-control" placeholder="เดือน / วัน / ปี ค.ศ." />
                 <span id="showdate"></span>
               </div>
               <div class="col-md-6 mb-2 mt-md-5 d-flex align-items-center">
@@ -136,15 +134,17 @@
 
   <?php //include '../components/footer.php'; 
   ?>
+  <?php include '../auth/modal_login.php';?>
+  
   <!-- Bootstrap 5 Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
   <!-- Jquery 3.6.0 -->
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <!-- <script src="https://code.jquery.com/ui/1.13.0-rc.2/jquery-ui.js"></script> -->
   <!-- My Script -->
+  <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/global_function.js"></script>
-  <script src="../../assets/js/index.js"></script>
+  <script src="../../assets/js/profile.js"></script>
   <script>
     function showDate() {
       d = new Date(document.getElementById("inputDate").value);
