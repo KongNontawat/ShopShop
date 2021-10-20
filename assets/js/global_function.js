@@ -1,4 +1,5 @@
 $(function () {
+	set_profile();
 	var btn = $("#BackToTop");
 	$(window).scroll(function () {
 		if ($(window).scrollTop() > 300) {
@@ -11,7 +12,6 @@ $(function () {
 		e.preventDefault();
 		$("html, body").animate({ scrollTop: 0 }, "1000");
 	});
-
 });
 
 function goBack() {
@@ -31,3 +31,17 @@ function readURL(input) {
 		reader.readAsDataURL(input.files[0]);
 	}
 }
+
+function set_profile() {
+	let id_user = localStorage.getItem('id_user');
+	let username = localStorage.getItem('username');
+	let role = localStorage.getItem('role');
+	let photo = localStorage.getItem('photo');
+	let login = localStorage.getItem('login');
+	if(photo == 'null') {
+  	photo = 'default.jpg'
+	}
+	$('#nav_username').text(username);
+	$('#nav_photo').attr('src','../../assets/image/' + photo);
+}
+

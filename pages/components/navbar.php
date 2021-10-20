@@ -37,8 +37,7 @@
           <li class="nav-item"><a href="../product/product_detail.php" class="nav-link">รายละเอียด</a></li>
           <li class="nav-item"><a href="../news/" class="nav-link">ข่าวสาร</a></li>
           <li class="nav-item"><a href="../about/" class="nav-link">เกี่ยวกับเรา</a></li>
-          <li class="nav-item"><a href="../../dashboard/pages/" class="btn btn-outline-dark ms-1 me-2">Dashboard</a></li>
-          <li class="nav-item"><a href="#!" class="btn btn-outline-dark ms-1 me-2" data-bs-target="#modal_login" data-bs-toggle="modal">Login</a></li>
+          <li class="nav-item" id="btn-dashboard"><a href="../../dashboard/pages/home/" class="btn btn-outline-dark ms-1 me-2">Dashboard</a></li>
         </ul>
         <ul class="navbar-nav ms-auto mt-4 mt-md-0">
           <li class="nav-item me-3 me-md-3 my-auto d-flex justify-content-center">
@@ -57,8 +56,8 @@
             <div class="dropdown">
               <a class="dropdown-toggle text-dark" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <img src="../../assets/image/default.jpg" alt="" class="img-fluid rounded-circle">
-                <span class="text-dark ms-2 d-sm-inline d-md-none d-lg-inline">Kong Nontawat</span>
+                <img src="../../assets/image/default.jpg" alt="" class="img-fluid rounded-circle" id="nav_photo">
+                <span class="text-dark ms-2 d-sm-inline d-md-none d-lg-inline" id="nav_username"></span>
               </a>
 
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
@@ -66,7 +65,7 @@
                 <li><a class="dropdown-item" href="../profile/change_password.php"><i class="fas fa-key me-1"></i>เปลี่ยนรหัส</a></li>
                 <li><a class="dropdown-item" href="../profile/order.php"><i class="fas fa-shopping-cart me-1"></i>การสั่งซื้อ</a></li>
                 <li><a class="dropdown-item" href="../profile/order_history.php"><i class="far fa-list-alt me-1"></i></i>ประวัติการสั่งซื้อ</a></li>
-                <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-1"></i>ออกจากระบบ</a>
+                <li><a class="dropdown-item text-danger" id="btn-logout" href="#"><i class="fas fa-sign-out-alt me-1"></i>ออกจากระบบ</a>
                 </li>
               </ul>
             </div>

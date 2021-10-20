@@ -4,12 +4,12 @@ class DB
     private $server = "localhost";
     private $username = "root";
     private $password = "";
-    private $dbname = "project_web_blog";
+    private $dbname = "ShopShop";
 
-    public static function connect()
+    public function connect()
     {
         try {
-            $conn = new PDO('"'."mysql:host=".DB::$server."; dbname=".DB::$dbname.'"', DB::$username, DB::$password);
+            $conn = new PDO("mysql:host=$this->server; dbname=$this->dbname", $this->username, $this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES,FALSE);

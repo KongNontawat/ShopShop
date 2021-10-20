@@ -16,6 +16,7 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
   <!-- Style -->
+  <link rel="stylesheet" href="../../assets/css/main.css">
   <link rel="stylesheet" href="../../assets/css/index.css">
   <title>HOME ShopShop</title>
 </head>
@@ -367,8 +368,9 @@
   <!-- Jquery 3.6.0 -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- My Script -->
-  <script src="../../assets/js/auth.js"></script>
+  
   <script src="../../assets/js/global_function.js"></script>
+  <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/index.js"></script>
 </body>
 

@@ -9,7 +9,10 @@
       </div>
       <div class="modal-body px-2 px-sm-3 px-md-4 px-lg-5">
         <h2 class="text-center fw-normal mb-3">ลงชื่อเข้าใช้</h2>
-        <form id="form_login">
+        <div class="alert alert-danger py-1" id="alert_login" style="display:none;">
+
+        </div>
+        <form id="form_login" enctype="multipart/form-data">
           <div class="mb-3">
             <label for="input-username" class="form-label">ชื่อผู้ใช้</label>
             <input type="text" class="form-control" id="input-username" name="username" placeholder="username">
@@ -39,7 +42,8 @@
       </div>
       <div class="modal-body px-2 px-sm-3 px-md-4 px-lg-5">
         <h2 class="text-center fw-normal mb-3">สมัครสมาชิก</h2>
-        <form id="form_register">
+        <div class="alert alert-danger py-1" id="alert_register" style="display:none;"></div>
+        <form id="form_register" enctype="multipart/form-data">
           <div class="mb-3">
             <label for="input-username" class="form-label">ชื่อผู้ใช้</label>
             <input type="text" class="form-control" id="input-username" name="username" placeholder="username">
