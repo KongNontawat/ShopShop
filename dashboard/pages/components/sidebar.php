@@ -1,5 +1,5 @@
 <!-- Sidebar OffCanvas -->
-<div class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="offcanvasExample">
+<div class="offcanvas offcanvas-start bg-dark text-white sidebar-nav" tabindex="-1" id="side_bar">
   <div class="offcanvas-body p-0">
     <div class="sidebar-header text-center pt-3 d-block d-lg-none">
       <a href="../home/" class="text-white">
@@ -20,10 +20,10 @@
           </div>
         </li>
         <li class="sidebar-item">
-          <a href="../product/" id="product" class="nav-link sidebar-link ps-4"><i class="fas fa-box-open me-2"></i>จัดการสินค้า</a>
+          <a href="../product/" id="sidebar_product" class="nav-link sidebar-link ps-4"><i class="fas fa-box-open me-2"></i>จัดการสินค้า</a>
         </li>
         <li class="sidebar-item">
-          <a href="../category/" id="category" class="nav-link sidebar-link ps-4"><i class="fas fa-luggage-cart me-2"></i>จัดการประเภทสินค้า</a>
+          <a href="../category/" id="sidebar_category" class="nav-link sidebar-link ps-4"><i class="fas fa-luggage-cart me-2"></i>จัดการประเภทสินค้า</a>
         </li>
         <li class="sidebar-item">
           <a href="" class="nav-link sidebar-link ps-4"><i class="fas fa-tag me-2"></i>จัดการโปรโมชั่น</a>
@@ -115,7 +115,7 @@
           <hr class="dropdown-divider">
         </li>
         <li class="sidebar-item text-center my-3">
-          <a href="" class="text-danger"><i class="fas fa-sign-out-alt me-2"></i></i>ออกจากระบบ</a>
+          <a href="#" id="btn-logout" class="text-danger"><i class="fas fa-sign-out-alt me-2"></i></i>ออกจากระบบ</a>
         </li>
       </ul>
     </nav>

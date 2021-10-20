@@ -48,12 +48,12 @@
         </div><!-- /.row -->
       </section>
 
-      <section class="content">
+      <section class="content mb-5">
         <div class="card shadow-sm">
           <div class="card-header py-3 d-flex justify-content-between flex-wrap flex-sm-nowrap bg-white ">
             <h5 class="fw-normal m-0">รายการประเภทสินค้าทั้งหมด</h5>
             <div class="right d-flex align-item-center flex-wrap flex-sm-nowrap">
-              <button type="button" class="btn btn-primary px-1 py-2 me-2 my-2 my-sm-0" style="width: 10rem;" data-bs-toggle="modal" data-bs-target="#exampleModal"> + เพิ่มประเภท</button>
+              <button type="button" class="btn btn-primary px-1 py-2 me-2 my-2 my-sm-0" style="width: 10rem;" data-bs-toggle="modal" data-bs-target="#modal_edit"> + เพิ่มประเภท</button>
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="ค้นหา..." aria-describedby="basic-addon2">
                 <span class="input-group-text bg-white" id="basic-addon2"><i class="fas fa-search"></i></span>
@@ -73,18 +73,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th class="text-center">1</th>
-                    <td>Macbook pro 15</td>
-                    <td>Notebook</td>
-                    <td>12:05:2021 12:00น</td>
-                    <td>
-                      <a href="#!" id="btn-edit" class="text-secondary me-2"><i class="fas fa-edit"></i></a>
-                      <a href="#!" id="btn-delete" class="text-secondary"><i class="fas fa-trash"></i></a>
-                    </td>
-                  </tr>
+
                 </tbody>
               </table>
+              <nav id="pagination">
+              </nav>
+              <input type="hidden" name="currentpage" id="currentpage" value="1">
             </div>
           </div>
         </div>
@@ -94,6 +88,7 @@
 
   <!-- Modal Form Add -->
   <?php include 'modal_add_category.php'; ?>
+  <?php include '../auth/modal_login.php'; ?>
 
   <!-- Bootstrap 5 Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
@@ -101,6 +96,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- My Script -->
   <script src="../../assets/js/global_function.js"></script>
+  <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/category.js"></script>
 
 </body>

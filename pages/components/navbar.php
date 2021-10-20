@@ -56,7 +56,7 @@
             <div class="dropdown">
               <a class="dropdown-toggle text-dark" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                <img src="../../assets/image/default.jpg" alt="" class="img-fluid rounded-circle" id="nav_photo">
+                <img src="../../assets/image/default.png" alt="" class="img-fluid rounded-circle" id="nav_photo">
                 <span class="text-dark ms-2 d-sm-inline d-md-none d-lg-inline" id="nav_username"></span>
               </a>
 

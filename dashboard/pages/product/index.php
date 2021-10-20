@@ -100,6 +100,8 @@
 
   <!-- Modal Form Add -->
   <?php include 'modal_add_product.php'; ?>
+  <?php include '../auth/modal_login.php'; ?>
+
 
   <!-- Bootstrap 5 Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
@@ -107,6 +109,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- My Script -->
   <script src="../../assets/js/global_function.js"></script>
+  <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/product.js"></script>
 
 </body>

@@ -11,13 +11,13 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../../../assets/image/default.jpg" alt="" style="width: 50px;" class="img-fluid rounded-circle">
-            <span class="text-white ms-1">Kong Nontawat</span>
+            <img src="../../../assets/image/default.png" id="nav_photo" style="width: 50px;" class="img-fluid rounded-circle">
+            <span class="text-white ms-1" id="nav_username"></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end mt-2" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="../profile/"><i class="fas fa-user-edit me-1"></i>โปรไฟล์</a></li>
-            <li><a class="dropdown-item" href="../profile/change_password.php"><i class="fas fa-key me-1"></i>ไปที่หน้าเว็บ</a></li>
-            <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-sign-out-alt me-1"></i>ออกจากระบบ</a>
+            <li><a class="dropdown-item" href="../profile/change_password.php"><i class="fas fa-home me-1"></i>ไปที่หน้าเว็บ</a></li>
+            <li><a class="dropdown-item text-danger" id="nav-logout" href="#"><i class="fas fa-sign-out-alt me-1"></i>ออกจากระบบ</a>
           </ul>
         </li>
       </ul>

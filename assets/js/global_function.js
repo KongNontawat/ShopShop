@@ -39,7 +39,7 @@ function set_profile() {
 	let photo = localStorage.getItem('photo');
 	let login = localStorage.getItem('login');
 	if(photo == 'null') {
-  	photo = 'default.jpg'
+  	photo = 'default.png'
 	}
 	$('#nav_username').text(username);
 	$('#nav_photo').attr('src','../../assets/image/' + photo);

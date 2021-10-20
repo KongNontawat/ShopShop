@@ -1,14 +1,14 @@
 $(function () {
 	var login = localStorage.getItem("login");
 	var role = localStorage.getItem("role");
+	if (role == "user") {
+		window.location.href = "../../../pages/home/";
+	}
 	if (login !== "login") {
 		$("#modal_login").modal("show");
 	}
-	if (role == "admin") {
-		$("#btn-dashboard").show();
-	} else {
-		$('#btn-dashboard').hide();
-	}
+	
+	set_profile();
 
 	$("#form_register").on("submit", function (e) {
 		e.preventDefault();
@@ -27,8 +27,8 @@ $(function () {
 				localStorage.setItem("photo", response.data.photo);
 				localStorage.setItem("login", "login");
 				set_profile();
-				if (response.data.role === "admin") {
-					window.location.href = "../../dashboard/pages/home/";
+				if (response.data.role === "user") {
+					window.location.href = "../../../pages/home/";
 				}
 			})
 			.fail((resp) => {
@@ -56,8 +56,8 @@ $(function () {
 				localStorage.setItem("login", "login");
 				set_profile();
 				
-				if (response.data.role === "admin") {
-					window.location.href = "../../dashboard/pages/home/";
+				if (response.data.role === "user") {
+					window.location.href = "../../../pages/home/";
 				}
 			})
 			.fail((resp) => {
@@ -68,6 +68,17 @@ $(function () {
 	});
 
 	$("#btn-logout").on("click", function (e) {
+		e.preventDefault();
+		localStorage.removeItem("login");
+		localStorage.removeItem("username");
+		localStorage.removeItem("photo");
+		localStorage.removeItem("id_user");
+		localStorage.removeItem("role");
+		$("#nav_username").text('');
+		$("#nav_photo").attr("src", "../../assets/image/default.png");
+		$("#modal_login").modal("show");
+	});
+	$("#nav-logout").on("click", function (e) {
 		e.preventDefault();
 		localStorage.removeItem("login");
 		localStorage.removeItem("username");

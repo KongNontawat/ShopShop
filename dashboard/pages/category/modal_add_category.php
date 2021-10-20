@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade mt-4" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade mt-4" id="modal_edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -11,6 +11,7 @@
           <div class="row gy-3 justify-content-center m-0">
             <div class="col-12">
               <label for="input-title" class="form-label">ประเภทสินค้า</label>
+              <input type="hidden" name="id_category" id="input-id">
               <input type="text" class="form-control" name="title" id="input-title" placeholder="ชื่อสินค้า" autofocus>
             </div>
             <div class="col-12">
