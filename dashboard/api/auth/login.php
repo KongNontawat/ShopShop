@@ -1,17 +1,19 @@
 <?php
-// header('Content-Type: application/json');
+header('Content-Type: application/json');
 require_once '../Auth.class.php';
 $Auth = new Auth();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  if (!empty($_POST['username']) && !empty($_POST['password'])) {
+  if (isset($_POST['data'])) {
+    $response = [];
+    $_POST = json_decode($_POST['data'], true);
     $data = [
-      'username' => $_POST['username'],
-      'password' => $_POST['password']
+      'username' => $_POST[0]['username'],
+      'password' => $_POST[1]['password']
     ];
     $result = $Auth->check_login($data);
     if ($result) {
-      $user_data = $Auth->get_user($_POST['username']);
+      $user_data = $Auth->get_user($data['username']);
       $response = [
         'status' => true,
         'message' => 'login success',

@@ -3,7 +3,6 @@
 	--topNavbarHeight: 60px;
 }
 
-
 a {
 	text-decoration: none;
 }
@@ -14,61 +13,62 @@ ul li {
 	padding: 0;
 }
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 body {
 	font-family: "Kanit", sans-serif;
 }
 
 .row {
-	width: 100%!important;
+	width: 100% !important;
 }
 
 #loading {
-  background: #ffffff;
-  color: #666666;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: 5000;
-  top: 0;
-  left: 0;
-  float: left;
-  text-align: center;
-  padding-top: 25%;
-  opacity: 0.8;
+	background: #ffffff;
+	color: #666666;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 5000;
+	text-align: center;
+	opacity: 0.8;
+}
+
+#loading .spinner-grow {
+	position: absolute;
+	top: 45%;
+	left: 45%;
 }
 
 .sidebar-nav {
 	width: var(--offcanvas-width);
-	
 }
 
 .offcanvas-body {
 	overflow-y: auto;
 	direction: ltr;
-  scrollbar-color: #212529 #212529;
-  scrollbar-width: thin;
+	scrollbar-color: #212529 #212529;
+	scrollbar-width: thin;
 }
 
 .offcanvas-body::-webkit-scrollbar {
-  width: 7px;
+	width: 7px;
 }
 
 .offcanvas-body::-webkit-scrollbar-track {
-  background-color: #212529;
+	background-color: #212529;
 }
 
 .offcanvas-body::-webkit-scrollbar-thumb {
-  border-radius: 100px;
-  border: 1px solid transparent;
-  background-clip: content-box;
-  background-color: #0D6EFC;
+	border-radius: 100px;
+	border: 1px solid transparent;
+	background-clip: content-box;
+	background-color: #0d6efc;
 }
 
 .sidebar-nav nav .nav-link {
 	position: relative;
-	color: #fff!important;
+	color: #fff !important;
 	padding: 10px 0;
 	font-weight: 300;
 	transition: all 0.05s ease-in-out;
@@ -80,11 +80,11 @@ body {
 
 .sidebar-nav nav .nav-link.active {
 	background-color: #2d3741;
-	border-left: 3px solid #0D6EFC;
+	border-left: 3px solid #0d6efc;
 	font-weight: 400;
 }
 
-.sidebar-nav nav .sidebar-link .right-icon{
+.sidebar-nav nav .sidebar-link .right-icon {
 	transition: all ease-in-out 0.25s;
 	position: absolute;
 	right: 20px;
@@ -92,17 +92,24 @@ body {
 
 .content-header,
 .content {
-  width: 100%;
-  margin: 0 auto;
+	width: 100%;
+	margin: 0 auto;
 }
 
 .sidebar-nav nav .sidebar-link[aria-expanded="true"] .right-icon {
 	transform: rotate(180deg);
 }
 
+#pagination ul li.disabled a {
+	color: rgb(161, 161, 161) !important;
+}
+
 @media (min-width: 992px) {
 	body {
-		overflow-y: auto!important;
+		overflow-y: auto !important;
+	}
+	body.modal-open {
+		padding: 0 !important;
 	}
 	main {
 		margin-left: var(--offcanvas-width);
@@ -112,11 +119,14 @@ body {
 	}
 	.sidebar-nav {
 		transform: none;
-		visibility: visible!important;
+		visibility: visible !important;
 		top: var(--topNavbarHeight);
 		height: calc(100% - var(--topNavbarHeight));
 	}
-	
-
+	#loading .spinner-grow {
+	position: absolute;
+	top: 45%;
+	left: 40%;
+}
 
 }

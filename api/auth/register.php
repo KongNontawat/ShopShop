@@ -1,20 +1,21 @@
 <?php
-// header('Content-Type: application/json');
+header('Content-Type: application/json');
 require_once '../Auth.class.php';
 $Auth = new Auth();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  if (!empty($_POST) && !empty($_POST['username'])) {
-    if ($_POST['password'] === $_POST['password2']) {
+  if (isset($_POST['data'])) {
+    $response = [];
+    $_POST = json_decode($_POST['data'], true);
+    if ($_POST[2]['password'] === $_POST[3]['password2']) {
       $data = [
-        'username' => $_POST['username'],
-        'email' => $_POST['email']
+        'username' => $_POST[0]['username'],
+        'email' => $_POST[1]['email']
       ];
-      // exit();
       $reg_data = [
-        'username' => $_POST['username'],
-        'email' => $_POST['email'],
-        'password' => $_POST['password'],
+        'username' => $_POST[0]['username'],
+        'email' => $_POST[1]['email'],
+        'password' => $_POST[2]['password'],
         'role' => 'user'
       ];
       $result = $Auth->check_register($data);
@@ -22,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $reg = null;
         $reg = $Auth->set_register($reg_data);
         if ($reg) {
-          $user_data = $Auth->get_user($_POST['username']);
+          $user_data = $Auth->get_user($data['username']);
           $response = [
-            'status' => false,
+            'status' => true,
             'message' => 'Register Success',
             'data' => $user_data
           ];

@@ -37,15 +37,15 @@ function pagination(totalpages, currentpage) {
 	var pagelist = "";
 	if (totalpages >= 1) {
 		currentpage = parseInt(currentpage);
-		pagelist += `<ul class="pagination justify-content-end mt-3">`;
-		const prevClass = currentpage == 1 ? " disabled" : "";
-		pagelist += `<li class="page-item${prevClass}"><a class="page-link" href="#" data-page="${currentpage - 1}">Previous</a></li>`;
+		pagelist += `<ul class="pagination justify-content-end mt-3 mt-lg-4 me-2 me-lg-3">`;
+		const prevClass = currentpage == 1 ? " disabled text-muted" : "";
+		pagelist += `<li class="page-item${prevClass}"><a class="page-link" href="#" data-page="${currentpage - 1}">ก่อนหน้า</a></li>`;
 		for (let p = 1; p <= totalpages; p++) {
 			const activeClass = currentpage == p ? " active" : "";
 			pagelist += `<li class="page-item${activeClass}"><a class="page-link" href="#" data-page="${p}">${p}</a></li>`;
 		}
-		const nextClass = currentpage == totalpages ? " disabled" : "";
-		pagelist += `<li class="page-item${nextClass}"><a class="page-link" href="#" data-page="${currentpage + 1}">Next</a></li>`;
+		const nextClass = currentpage == totalpages ? " disabled text-muted" : "";
+		pagelist += `<li class="page-item${nextClass}"><a class="page-link" href="#" data-page="${currentpage + 1}">ถัดไป</a></li>`;
 		pagelist += `</ul>`;
 	}
 	$("#pagination").html(pagelist);

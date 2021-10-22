@@ -13,13 +13,13 @@
 
         </div>
         <form id="form_login" enctype="multipart/form-data">
-          <div class="mb-3">
+          <div class="mb-3 input-value">
             <label for="input-username" class="form-label">ชื่อผู้ใช้</label>
-            <input type="text" class="form-control" id="input-username" name="username" placeholder="username">
+            <input type="text" class="form-control" id="input-username-login" name="username" placeholder="username">
           </div>
-          <div class="mb-4">
+          <div class="mb-4 input-value">
             <label for="input-password" class="form-label">รหัสผ่าน</label>
-            <input type="password" class="form-control" id="input-password" name="password" placeholder="password">
+            <input type="password" class="form-control" id="input-password-login" name="password" placeholder="password">
           </div>
           <div class="my-3">
             <button type="submit" class="btn btn-dark col-12" id="btn-login">ลงชื่อเข้าใช้</button>
@@ -44,19 +44,19 @@
         <h2 class="text-center fw-normal mb-3">สมัครสมาชิก</h2>
         <div class="alert alert-danger py-1" id="alert_register" style="display:none;"></div>
         <form id="form_register" enctype="multipart/form-data">
-          <div class="mb-3">
+          <div class="mb-3 input-value-reg">
             <label for="input-username" class="form-label">ชื่อผู้ใช้</label>
             <input type="text" class="form-control" id="input-username" name="username" placeholder="username">
           </div>
-          <div class="mb-3">
+          <div class="mb-3 input-value-reg">
             <label for="input-email" class="form-label">อีเมล</label>
             <input type="email" class="form-control" id="input-email" name="email" placeholder="email">
           </div>
-          <div class="mb-4">
+          <div class="mb-4 input-value-reg">
             <label for="input-password" class="form-label">รหัสผ่าน</label>
             <input type="password" class="form-control" id="input-password" name="password" placeholder="password">
           </div>
-          <div class="mb-4">
+          <div class="mb-4 input-value-reg">
             <label for="input-password2" class="form-label">ยืนยันรหัสผ่าน</label>
             <input type="password" class="form-control" id="input-password2" name="password2" placeholder="confirm password">
           </div>

@@ -22,8 +22,7 @@
 </head>
 
 <body class="bg-light">
-  <!-- Loading -->
-  <?php include '../components/loading.php'; ?>
+  
   <!-- Navbar -->
   <?php include '../components/navbar.php'; ?>
 
@@ -32,8 +31,10 @@
 
   <!-- Main -->
   <main class="mt-5 pt-4">
+    <!-- Loading -->
+  <?php include '../components/loading.php'; ?>
+  
     <div class="container-fluid px-2 px-sm-3 px-lg-4">
-
       <section class="content-header py-3">
         <div class="row mx-0 mb-2 justify-content-between">
           <div class="col-sm-6 px-lg-0">
@@ -53,9 +54,9 @@
           <div class="card-header py-3 d-flex justify-content-between flex-wrap flex-sm-nowrap bg-white ">
             <h5 class="fw-normal m-0">รายการประเภทสินค้าทั้งหมด</h5>
             <div class="right d-flex align-item-center flex-wrap flex-sm-nowrap">
-              <button type="button" class="btn btn-primary px-1 py-2 me-2 my-2 my-sm-0" style="width: 10rem;" data-bs-toggle="modal" data-bs-target="#modal_edit"> + เพิ่มประเภท</button>
+              <button type="button" class="btn btn-primary px-1 py-2 me-2 my-2 my-sm-0" style="width: 10rem;" id="btn-show-modal-category" data-bs-toggle="modal" data-bs-target="#modal_edit"> + เพิ่มประเภท</button>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="ค้นหา..." aria-describedby="basic-addon2">
+                <input type="text" class="form-control" id="search_category" placeholder="ค้นหา..." aria-describedby="basic-addon2">
                 <span class="input-group-text bg-white" id="basic-addon2"><i class="fas fa-search"></i></span>
               </div>
             </div>
@@ -66,14 +67,13 @@
                 <thead>
                   <tr>
                     <th class="text-center" style="width: 5%;">#</th>
-                    <th style="width: 25%;">ประเภทสินค้า</th>
+                    <th style="width: 22%;">ประเภทสินค้า</th>
                     <th style="width: 35%;">คำอธิบาย</th>
-                    <th style="width: 20%;">เพิ่มเมื่อ</th>
+                    <th style="width: 23%;">เปลี่ยนแปลงเมื่อ</th>
                     <th style="width: 15%;">จัดการ</th>
                   </tr>
                 </thead>
                 <tbody>
-
                 </tbody>
               </table>
               <nav id="pagination">

@@ -10,60 +10,75 @@ $(function () {
 		$('#btn-dashboard').hide();
 	}
 
-	$("#form_register").on("submit", function (e) {
+		$("#form_register").on("submit", function (e) {
 		e.preventDefault();
+		let formData = [];
+		$("#form_register")
+			.find(".input-value-reg")
+			.each(function (i, element) {
+				let inputObj = {};
+				$(element)
+					.find("input")
+					.each(function (index, data) {
+						$.extend(inputObj, { [data.name]: data.value });
+					});
+				formData.push(inputObj);
+			});
 		$.ajax({
 			type: "POST",
 			url: "../../api/auth/register.php",
-			data: $(this).serialize(),
+			data: {data: JSON.stringify(formData)},
 		})
 			.done((resp) => {
 				$("#modal_register").modal("hide");
-				$("#modal_login").modal("hide");
-				let response = JSON.parse(resp);
-				localStorage.setItem("id_user", response.data.id_user);
-				localStorage.setItem("username", response.data.username);
-				localStorage.setItem("role", response.data.role);
-				localStorage.setItem("photo", response.data.photo);
+				localStorage.setItem("id_user", resp.data.id_user);
+				localStorage.setItem("username", resp.data.username);
+				localStorage.setItem("role", resp.data.role);
+				localStorage.setItem("photo", resp.data.photo);
 				localStorage.setItem("login", "login");
 				set_profile();
-				if (response.data.role === "admin") {
-					window.location.href = "../../dashboard/pages/home/";
-				}
 			})
 			.fail((resp) => {
-				let response = JSON.parse(resp.responseText);
 				$("#alert_register").show();
-				$("#alert_register").text(response.message);
-				console.log("error" + resp);
+				$("#alert_register").text(resp.responseJSON.message);
 			});
 	});
+	
 
 	$("#form_login").on("submit", function (e) {
 		e.preventDefault();
+		let formData = [];
+		$("#form_login")
+			.find(".input-value")
+			.each(function (i, element) {
+				let inputObj = {};
+				$(element)
+					.find("input")
+					.each(function (index, data) {
+						$.extend(inputObj, { [data.name]: data.value });
+					});
+				formData.push(inputObj);
+			});
 		$.ajax({
 			type: "POST",
 			url: "../../api/auth/login.php",
-			data: $(this).serialize(),
+			data: { data: JSON.stringify(formData) }
 		})
 			.done((resp) => {
 				$("#modal_login").modal("hide");
-				let response = JSON.parse(resp);
-				localStorage.setItem("id_user", response.data.id_user);
-				localStorage.setItem("username", response.data.username);
-				localStorage.setItem("role", response.data.role);
-				localStorage.setItem("photo", response.data.photo);
+				localStorage.setItem("id_user", resp.data.id_user);
+				localStorage.setItem("username", resp.data.username);
+				localStorage.setItem("role", resp.data.role);
+				localStorage.setItem("photo", resp.data.photo);
 				localStorage.setItem("login", "login");
 				set_profile();
-				
-				if (response.data.role === "admin") {
+				if (resp.data.role === "admin") {
 					window.location.href = "../../dashboard/pages/home/";
 				}
 			})
 			.fail((resp) => {
-				let response = JSON.parse(resp.responseText);
 				$("#alert_login").show();
-				$("#alert_login").text(response.message);
+				$("#alert_login").text(resp.responseJSON.message);
 			});
 	});
 

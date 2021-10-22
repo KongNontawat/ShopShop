@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand navbar-dark bg-dark px-2 px-lg-4 fixed-top">
   <div class="container-fluid">
-    <button class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+    <button class="btn btn-dark d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#side_bar" aria-controls="side_bar">
       <i class="fas fa-bars"></i>
     </button>
     <a href="../home/" class="navbar-brand d-none d-sm-block">

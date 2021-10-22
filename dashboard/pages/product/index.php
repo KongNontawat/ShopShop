@@ -22,8 +22,7 @@
 </head>
 
 <body class="bg-light">
-  <!-- Loading -->
-  <?php include '../components/loading.php'; ?>
+
   <!-- Navbar -->
   <?php include '../components/navbar.php'; ?>
 
@@ -32,6 +31,8 @@
 
   <!-- Main -->
   <main class="mt-5 pt-4">
+    <!-- Loading -->
+    <?php include '../components/loading.php'; ?>
     <div class="container-fluid px-2 px-sm-3 px-lg-4">
 
       <section class="content-header py-3">

@@ -7,63 +7,77 @@ $(function () {
 	if (login !== "login") {
 		$("#modal_login").modal("show");
 	}
-	
-	set_profile();
 
-	$("#form_register").on("submit", function (e) {
+	set_profile();
+	let formData = [];
+	$("#form_register_admin").on("submit", function (e) {
 		e.preventDefault();
+		$("#form_register_admin")
+			.find(".input-value-reg-admin")
+			.each(function (i, element) {
+				let inputObj = {};
+				$(element)
+					.find("input")
+					.each(function (index, data) {
+						$.extend(inputObj, { [data.name]: data.value });
+					});
+				formData.push(inputObj);
+			});
 		$.ajax({
 			type: "POST",
 			url: "../../api/auth/register.php",
-			data: $(this).serialize(),
+			data: {data: JSON.stringify(formData)},
 		})
 			.done((resp) => {
 				$("#modal_register").modal("hide");
-				$("#modal_login").modal("hide");
-				let response = JSON.parse(resp);
-				localStorage.setItem("id_user", response.data.id_user);
-				localStorage.setItem("username", response.data.username);
-				localStorage.setItem("role", response.data.role);
-				localStorage.setItem("photo", response.data.photo);
+				localStorage.setItem("id_user", resp.data.id_user);
+				localStorage.setItem("username", resp.data.username);
+				localStorage.setItem("role", resp.data.role);
+				localStorage.setItem("photo", resp.data.photo);
 				localStorage.setItem("login", "login");
 				set_profile();
-				if (response.data.role === "user") {
-					window.location.href = "../../../pages/home/";
-				}
 			})
 			.fail((resp) => {
-				let response = JSON.parse(resp.responseText);
 				$("#alert_register").show();
-				$("#alert_register").text(response.message);
-				console.log("error" + resp);
+				$("#alert_register").text(resp.responseJSON.message);
 			});
 	});
 
-	$("#form_login").on("submit", function (e) {
+	$("#form_login_admin").on("submit", function (e) {
 		e.preventDefault();
+		let formData = [];
+		$("#form_login_admin")
+			.find(".input-value-admin")
+			.each(function (i, element) {
+				let inputObj = {};
+				$(element)
+					.find("input")
+					.each(function (index, data) {
+						$.extend(inputObj, { [data.name]: data.value });
+					});
+				formData.push(inputObj);
+			});
 		$.ajax({
 			type: "POST",
 			url: "../../api/auth/login.php",
-			data: $(this).serialize(),
+			data: { data: JSON.stringify(formData) }
 		})
 			.done((resp) => {
 				$("#modal_login").modal("hide");
-				let response = JSON.parse(resp);
-				localStorage.setItem("id_user", response.data.id_user);
-				localStorage.setItem("username", response.data.username);
-				localStorage.setItem("role", response.data.role);
-				localStorage.setItem("photo", response.data.photo);
+				localStorage.setItem("id_user", resp.data.id_user);
+				localStorage.setItem("username", resp.data.username);
+				localStorage.setItem("role", resp.data.role);
+				localStorage.setItem("photo", resp.data.photo);
 				localStorage.setItem("login", "login");
 				set_profile();
-				
-				if (response.data.role === "user") {
+				console.log(typeof resp);
+				if (resp.data.role === "user") {
 					window.location.href = "../../../pages/home/";
 				}
 			})
 			.fail((resp) => {
-				let response = JSON.parse(resp.responseText);
 				$("#alert_login").show();
-				$("#alert_login").text(response.message);
+				$("#alert_login").text(resp.responseJSON.message);
 			});
 	});
 
@@ -74,7 +88,7 @@ $(function () {
 		localStorage.removeItem("photo");
 		localStorage.removeItem("id_user");
 		localStorage.removeItem("role");
-		$("#nav_username").text('');
+		$("#nav_username").text("");
 		$("#nav_photo").attr("src", "../../assets/image/default.png");
 		$("#modal_login").modal("show");
 	});
@@ -85,7 +99,7 @@ $(function () {
 		localStorage.removeItem("photo");
 		localStorage.removeItem("id_user");
 		localStorage.removeItem("role");
-		$("#nav_username").text('');
+		$("#nav_username").text("");
 		$("#nav_photo").attr("src", "../../assets/image/default.png");
 		$("#modal_login").modal("show");
 	});
