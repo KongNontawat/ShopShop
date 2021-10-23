@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../../assets/css/main.css">
   <link rel="stylesheet" href="../../assets/css/product.css">
   <title>Dashboard ShopShop</title>
+  <link rel="icon" href="../../../assets/image/title_icon.svg" type="image/x-icon">
 </head>
 
 <body class="bg-light">
@@ -54,9 +55,9 @@
           <div class="card-header py-3 d-flex justify-content-between flex-wrap flex-sm-nowrap bg-white ">
             <h5 class="fw-normal m-0">รายการสินค้าทั้งหมด</h5>
             <div class="right d-flex align-item-center flex-wrap flex-sm-nowrap">
-              <button type="button" class="btn btn-primary px-2 py-2 me-2 my-2 my-sm-0" style="width: 135px;" data-bs-toggle="modal" data-bs-target="#exampleModal"> + เพิ่มสินค้า</button>
+              <button type="button" class="btn btn-primary px-2 py-2 me-2 my-2 my-sm-0" style="width: 135px;" id="btn-show-modal-product" data-bs-toggle="modal" data-bs-target="#modal_save_product"> + เพิ่มสินค้า</button>
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="ค้นหา..." aria-describedby="basic-addon2">
+                <input type="text" class="form-control" id="search_product" placeholder="ค้นหา..." aria-describedby="basic-addon2">
                 <span class="input-group-text bg-white" id="basic-addon2"><i class="fas fa-search"></i></span>
               </div>
             </div>
@@ -77,21 +78,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th class="text-center">1</th>
-                    <td><img src="../../../assets/image/default.jpg" alt=""></td>
-                    <td>Macbook pro 15</td>
-                    <td>Notebook</td>
-                    <td>51,000</td>
-                    <td>50</td>
-                    <td><span class="badge bg-success">เปิดใช้งาน</span></td>
-                    <td>
-                      <a href="#!" id="btn-edit" class="text-secondary me-2"><i class="fas fa-edit"></i></a>
-                      <a href="#!" id="btn-delete" class="text-secondary"><i class="fas fa-trash"></i></a>
-                    </td>
-                  </tr>
+                  
                 </tbody>
               </table>
+              <nav id="pagination">
+              </nav>
+              <input type="hidden" name="currentpage" id="currentpage" value="1">
             </div>
           </div>
         </div>
@@ -112,7 +104,7 @@
   <script src="../../assets/js/global_function.js"></script>
   <script src="../../assets/js/auth.js"></script>
   <script src="../../assets/js/product.js"></script>
-
+  
 </body>
 
 </html>

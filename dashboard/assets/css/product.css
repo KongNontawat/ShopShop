@@ -1,12 +1,12 @@
-:root{
-  --primary: #0D6EFD;
-  --secondary: #6C757D;
-  --success: #198754;
-  --danger: #DC3545;
-  --warning: #FFC107;
-  --info: #0DCAF0;
-  --light: #F8F9FA;
-  --dark: #212529;
+:root {
+	--primary: #0d6efd;
+	--secondary: #6c757d;
+	--success: #198754;
+	--danger: #dc3545;
+	--warning: #ffc107;
+	--info: #0dcaf0;
+	--light: #f8f9fa;
+	--dark: #212529;
 }
 
 table tbody img {
@@ -15,21 +15,21 @@ table tbody img {
 }
 
 table thead th {
-  font-weight: 500;
-  font-size: 1.1rem;
+	font-weight: 500;
+	font-size: 1.1rem;
 }
 
 table tbody td #btn-edit i,
 table tbody td #btn-delete i {
-  transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
 }
 
-table tbody td #btn-edit:hover i{
-  color: var(--warning);
+table tbody td #btn-edit:hover i {
+	color: var(--warning);
 }
 
-table tbody td #btn-delete:hover i{
-  color: var(--danger);
+table tbody td #btn-delete:hover i {
+	color: var(--danger);
 }
 
 #imgControl,
@@ -41,6 +41,92 @@ table tbody td #btn-delete:hover i{
 #imgControl #imgUpload {
 	object-fit: cover;
 	overflow: hidden;
+}
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 80px;
+	height: 30px;
+}
+
+.switch input {
+	display: none;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ca2222;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 23px;
+	width: 23px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+
+input:checked + .slider {
+	background-color: #2ab934;
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+	-webkit-transform: translateX(50px);
+	-ms-transform: translateX(50px);
+	transform: translateX(50px);
+}
+
+/*------ ADDED CSS ---------*/
+.on {
+	display: none;
+}
+
+.on,
+.off {
+	color: white;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 60%;
+	font-size: 12px;
+	font-family: Verdana, sans-serif;
+}
+
+input:checked + .slider .on {
+	display: block;
+	left: 40%;
+}
+
+input:checked + .slider .off {
+	display: none;
+}
+
+
+/*--------- END --------*/
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
 }
 @media (max-width: 500px) {
 	#imgControl #imgUpload {

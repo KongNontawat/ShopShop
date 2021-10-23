@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade mt-4 p-0" id="modal_edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade mt-4 p-0" id="modal_save_category" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">

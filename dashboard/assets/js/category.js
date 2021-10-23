@@ -35,7 +35,7 @@ $(function () {
 			showCancelButton: true,
 			confirmButtonColor: "#3085d6",
 			cancelButtonColor: "#d33",
-			confirmButtonText: "ลบเลย",
+			confirmButtonText: "ใช่, ลบเลย",
 		}).then((result) => {
 			if (result.isConfirmed) {
 				$.ajax({
@@ -138,7 +138,7 @@ $(function () {
               <td>
                 <a href="#!" data-id="${
 									value.id_category
-								}" id="btn-edit" class="text-secondary me-2" data-bs-toggle="modal" data-bs-target="#modal_edit"><i class="fas fa-edit"></i></a>
+								}" id="btn-edit" class="text-secondary me-2" data-bs-toggle="modal" data-bs-target="#modal_save_category"><i class="fas fa-edit"></i></a>
                 <a href="#!" data-id="${
 									value.id_category
 								}" id="btn-delete" class="text-secondary"><i class="fas fa-trash"></i></a>
@@ -183,7 +183,7 @@ function getAllCategory() {
               <td>
                 <a href="#!" data-id="${
 									value.id_category
-								}" id="btn-edit" class="text-secondary me-2" data-bs-toggle="modal" data-bs-target="#modal_edit"><i class="fas fa-edit"></i></a>
+								}" id="btn-edit" class="text-secondary me-2" data-bs-toggle="modal" data-bs-target="#modal_save_category"><i class="fas fa-edit"></i></a>
                 <a href="#!" data-id="${
 									value.id_category
 								}" id="btn-delete" class="text-secondary"><i class="fas fa-trash"></i></a>
@@ -197,7 +197,7 @@ function getAllCategory() {
 				const currentpage = $("#currentpage").val();
 				pagination(totalpages, currentpage);
 				$("#loading").fadeOut();
-				$("#modal_edit").modal("hide");
+				$("#modal_save_category").modal("hide");
 			}
 		})
 		.fail((resp) => {

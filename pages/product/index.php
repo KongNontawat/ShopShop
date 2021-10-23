@@ -18,7 +18,8 @@
   <!-- Style -->
   <link rel="stylesheet" href="../../assets/css/main.css">
   <link rel="stylesheet" href="../../assets/css/all_product.css">
-  <title>All Product ShopShop</title>
+  <title>Product ShopShop</title>
+  <link rel="icon" href="../../assets/image/title_icon.svg" type="image/x-icon">
 </head>
 
 <body class="bg-light">

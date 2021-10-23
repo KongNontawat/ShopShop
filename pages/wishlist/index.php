@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../../assets/css/main.css">
   <link rel="stylesheet" href="../../assets/css/wishlist.css">
   <title>WishList ShopShop</title>
+  <link rel="icon" href="../../assets/image/title_icon.svg" type="image/x-icon">
 </head>
 
 <body class="bg-light">

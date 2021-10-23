@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="../../assets/css/main.css">
   <link rel="stylesheet" href="../../assets/css/category.css">
   <title>Dashboard ShopShop</title>
+  <link rel="icon" href="../../../assets/image/title_icon.svg" type="image/x-icon">
 </head>
 
 <body class="bg-light">
@@ -54,7 +55,7 @@
           <div class="card-header py-3 d-flex justify-content-between flex-wrap flex-sm-nowrap bg-white ">
             <h5 class="fw-normal m-0">รายการประเภทสินค้าทั้งหมด</h5>
             <div class="right d-flex align-item-center flex-wrap flex-sm-nowrap">
-              <button type="button" class="btn btn-primary px-1 py-2 me-2 my-2 my-sm-0" style="width: 10rem;" id="btn-show-modal-category" data-bs-toggle="modal" data-bs-target="#modal_edit"> + เพิ่มประเภท</button>
+              <button type="button" class="btn btn-primary px-1 py-2 me-2 my-2 my-sm-0" style="width: 10rem;" id="btn-show-modal-category" data-bs-toggle="modal" data-bs-target="#modal_save_category"> + เพิ่มประเภท</button>
               <div class="input-group">
                 <input type="text" class="form-control" id="search_category" placeholder="ค้นหา..." aria-describedby="basic-addon2">
                 <span class="input-group-text bg-white" id="basic-addon2"><i class="fas fa-search"></i></span>
