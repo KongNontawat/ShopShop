@@ -1,28 +1,38 @@
 <?php
 header('Content-Type: application/json');
-require_once '../Product.class.php';
-$Obj = new Product();
+require_once '../DB.class.php';
+require_once '../Response.class.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_SESSION['login'])) {
   if ($_GET['action'] == 'getAll') {
     $page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
     $limit = 15;
     $start = ($page - 1) * $limit;
+    
+    $sql = "SELECT 
+      p.id_product, 
+      p.title,
+      p.id_category,
+      c.title as category,
+      p.detail,
+      p.detail2,
+      p.price,
+      p.status,
+      p.stock,
+      p.photo,
+      p.created_at
+    FROM 
+      product AS p
+    LEFT JOIN category AS c
+    ON p.id_category = c.id_category
+    ORDER BY id_product DESC
+    LIMIT {$start},{$limit}";
 
-    $data = $Obj->getAll($start ,$limit);
-    $count = $Obj->getCount();
-    $response = [
-    'status' => true,
-    'message' => 'Get Success',
-    'data' => $data,
-    'count' => $count
-  ];
+    $products = DB::query($sql);
+    return Response::success($products, 'Get All Success');
+  } else {
+    return Response::error('Not found! Get Error');
   }
 } else {
-  $response = [
-    'status' => false,
-    'message' => 'Method Not Allowed'
-  ];
-  http_response_code(405);
+  return Response::error('Method Not Allowed OR Unauthorized', 405);
 }
-echo json_encode($response);

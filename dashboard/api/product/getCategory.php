@@ -1,23 +1,16 @@
 <?php
 header('Content-Type: application/json');
-require_once '../Category.class.php';
-$Obj = new Category();
+require_once '../DB.class.php';
+require_once '../Response.class.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-  if ($_GET['action'] == 'getCategory') {
 
-    $data = $Obj->getAllCategory( 0, 10000);
-    $response = [
-    'status' => true,
-    'message' => 'Get Category Success',
-    'data' => $data
-  ];
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_SESSION['login'])) {
+  $query = DB::query('SELECT * FROM category ORDER BY id_category DESC');
+  if ($query) {
+    return Response::success($query, 'GetCategory Success');
+  } else {
+    return Response::error('Not found GetCategory Error');
   }
 } else {
-  $response = [
-    'status' => false,
-    'message' => 'Method Not Allowed'
-  ];
-  http_response_code(405);
+  return Response::error('Method Not Allowed OR Unauthorized', 405);
 }
-echo json_encode($response);

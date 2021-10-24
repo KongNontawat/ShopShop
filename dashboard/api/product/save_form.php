@@ -1,46 +1,43 @@
 <?php
-session_start();
 header('Content-Type: application/json');
-require_once '../Product.class.php';
-$Obj = new Product();
+require_once '../DB.class.php';
+require_once '../Helper.class.php';
+require_once '../Response.class.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SESSION['login'])) {
   if (isset($_FILES['photo']['tmp_name'])) {
-    $photoName = $Obj->uploadPhoto($_FILES['photo']);
+    $folderPath = "../../../assets/image/uploads/";
+    $photoName = Helper::uploadPhoto($_FILES['photo'], $folderPath);
     if (!$photoName) {
       $photoName = 'default.png';
     }
     $status = (isset($_POST['status'])) ? 1 : 0;
-    $data = [
-      'id_category' => $_POST['id_category'],
-      'title' => $_POST['title'],
-      'detail' => $_POST['detail'],
-      'detail2' => $_POST['detail2'],
-      'price' => $_POST['price'],
-      'stock' => $_POST['stock'],
+    $params = [
+      'id_category' => (int)Helper::clean($_POST['id_category']),
+      'title' => Helper::clean($_POST['title']),
+      'detail' => Helper::clean($_POST['detail']),
+      'detail2' => Helper::clean($_POST['detail2']),
+      'price' => Helper::clean($_POST['price']),
+      'stock' => (int)Helper::clean($_POST['stock']),
       'status' => $status,
       'photo' => $photoName
     ];
-    $result = $Obj->add($data);
-    if ($result) {
-      $response = [
-        'status' => true,
-        'message' => 'Add form success'
-      ];
-      http_response_code(200);
-    } else {
-      $response = [
-        'status' => false,
-        'message' => 'Add form Error'
-      ];
-      http_response_code(400);
+    if (!empty($params)) {
+      $fileds = $placholders = [];
+      foreach ($params as $field => $value) {
+        $fileds[] = $field;
+        $placholders[] = ":{$field}";
+      }
     }
+    $result = DB::query("INSERT INTO product (" . implode(',', $fileds) . ") VALUES (" . implode(',', $placholders) . ")",$params);
+    if ($result) {
+      return Response::success($result, 'Save Form Success', 201);
+    } else {
+      return Response::error('Not found! Save Form Error');
+    }
+  } else {
+    return Response::error('Not Photo upload',400);
   }
 } else {
-  $response = [
-    'status' => false,
-    'message' => 'Method Not Allowed'
-  ];
-  http_response_code(405);
+  return Response::error('Method Not Allowed OR Unauthorized', 405);
 }
-echo json_encode($response);

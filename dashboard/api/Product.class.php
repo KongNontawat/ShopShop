@@ -44,7 +44,24 @@ class Product extends DB
 
   public function getEdit($field, $value)
   {
-    $sql = "SELECT * FROM {$this->tableName}  WHERE {$field}=:{$field}";
+    $sql = "
+    SELECT 
+      p.id_product, 
+      p.title,
+      p.id_category,
+      c.title as category,
+      p.detail,
+      p.detail2,
+      p.price,
+      p.status,
+      p.stock,
+      p.photo,
+      p.created_at
+    FROM 
+      {$this->tableName} as p
+    LEFT JOIN category as c
+    ON p.id_category = c.id_category  WHERE {$field}=:{$field}
+    ";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([":{$field}" => $value]);
     if ($stmt->rowCount() > 0) {
@@ -102,7 +119,26 @@ class Product extends DB
 
   public function search($data)
   {
-    $sql = "SELECT * FROM {$this->tableName} WHERE title LIKE :search ORDER BY id_product DESC";
+    $sql = "
+    SELECT
+      p.id_product, 
+      p.title,
+      p.id_category,
+      c.title as category,
+      p.detail,
+      p.detail2,
+      p.price,
+      p.status,
+      p.stock,
+      p.photo,
+      p.created_at
+    FROM 
+      {$this->tableName} as p
+    LEFT JOIN category as c
+    ON p.id_category = c.id_category
+    WHERE p.title LIKE :search
+    ORDER BY id_product DESC 
+    ";
     $stmt = $this->connect()->prepare($sql);
     $stmt->execute([':search' => $data]);
     $result = $stmt->fetchAll();

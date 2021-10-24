@@ -25,7 +25,7 @@ $(function () {
 		$.ajax({
 			url: "../../api/product/getEdit.php",
 			type: "GET",
-			data: { id: id, action: "getEdit" },
+			data: { id_product: id},
 		})
 			.done((resp) => {
 				$("#input-id-product").val(resp.data.id_product);
@@ -35,9 +35,9 @@ $(function () {
 				$("#input-stock").val(resp.data.stock);
 				$("#input-detail").val(resp.data.detail);
 				$("#input-detail2").val(resp.data.detail2);
-				$("#input-photo").val('');
-				selectedFile = '';
-				$('#photo_old').val(resp.data.photo);
+				$("#input-photo").val("");
+				selectedFile = "";
+				$("#photo_old").val(resp.data.photo);
 				$("#imgUpload").attr(
 					"src",
 					"../../../assets/image/uploads/" + resp.data.photo
@@ -64,6 +64,27 @@ $(function () {
 			});
 	});
 
+	$(document).on("click", "a#btn-view", function (e) {
+		var id = $(this).data("id");
+
+		$.ajax({
+			url: "../../api/product/getEdit.php",
+			type: "GET",
+			data: { id: id, action: "getEdit" },
+		})
+			.done((resp) => {
+				if (resp.data) {
+					let html = ``;
+					html = creatModal(resp.data);
+					$("#modal_view .modal-dialog").html(html);
+					$("#loading").fadeOut();
+				}
+			})
+			.fail((resp) => {
+				console.log("error" + resp);
+			});
+	});
+
 	$(document).on("click", "a#btn-delete", function (e) {
 		e.preventDefault();
 		var id = $(this).data("id");
@@ -80,7 +101,7 @@ $(function () {
 				$.ajax({
 					url: "../../api/product/delete.php",
 					type: "DELETE",
-					data: JSON.stringify({ id_product: id }),
+					data: { id_product: id },
 				})
 					.done((resp) => {
 						Swal.fire({
@@ -90,6 +111,7 @@ $(function () {
 							showConfirmButton: false,
 							timer: 1600,
 						});
+						$('#modal_view').modal('hide');
 						getAll();
 					})
 					.fail((resp) => {
@@ -106,15 +128,15 @@ $(function () {
 
 	$("#form-add-product").submit((e) => {
 		e.preventDefault();
-		let endPoint = 'save_form.php';
+		let endPoint = "save_form.php";
 		let formData = new FormData();
 		let serialize = $("#form-add-product").serializeArray();
 		serialize.forEach(function (item, index) {
 			formData.append(item.name, item.value);
 		});
 		formData.append("photo", selectedFile);
-		if($("#input-id-product").val()) {
-			endPoint = 'update.php';
+		if ($("#input-id-product").val()) {
+			endPoint = "update.php";
 		}
 		$.ajax({
 			url: `../../api/product/${endPoint}`,
@@ -162,7 +184,7 @@ $(function () {
 			$("#input-title").focus();
 		}, 500);
 		$("#input-status").attr("checked", true);
-		$("#imgUpload").attr("src", '');
+		$("#imgUpload").attr("src", "");
 		$("#imgControl").addClass("d-none").removeClass("d-block");
 		$("#label-status").css("color", "#198754");
 		$("#label-status").text("เปิดใช้งาน");
@@ -171,49 +193,30 @@ $(function () {
 	$(document).on("keyup", "input#search_product", function (e) {
 		e.preventDefault();
 		var data = $(this).val();
-		$.ajax({
-			url: "../../api/product/search.php",
-			type: "GET",
-			data: { search: data },
-		})
-			.done((resp) => {
-				if (resp.data) {
-					let html = ``;
-					$.each(resp.data, function (index, value) {
-						html += `
-						<tr>
-              <th class="text-center">${index + 1}</th>
-              <td><img src="../../../assets/image/${value.photo}" alt=""></td>
-              <td>${value.title}</td>
-              <td>${value.category}</td>
-              <td>${value.price}</td>
-              <td>${value.stock}</td>
-              <td><span class="badge bg-success">เปิดใช้งาน</span></td>
-              <td>
-                <a href="#!" id="btn-edit" data-id="${
-									value.id_product
-								}" data-bs-toggle="modal" data-bs-target="#modal_save_product" class="text-secondary me-2"><i class="fas fa-edit"></i></a>
-                <a href="#!" id="btn-delete" data-id="${
-									value.id_product
-								}" class="text-secondary"><i class="fas fa-trash"></i></a>
-              </td>
-            </tr>
-						`;
-					});
-					$("tbody").html(html);
-					$("#loading").fadeOut();
-				} else {
-					getAll();
-				}
+		if (data.length > 1) {
+			$.ajax({
+				url: "../../api/product/search.php",
+				type: "GET",
+				data: { search: data },
 			})
-			.fail((resp) => {
-				Swal.fire({
-					icon: "error",
-					title: "เรียกดูข้อมูลไม่สำเร็จ",
-					text: "ผิดพลาด เรียกดูข้อมูลไม่สำเร็จ",
-					footer: resp.responseJSON.message,
+				.done((resp) => {
+					if (resp.data) {
+						let html = ``;
+						$.each(resp.data, function (index, value) {
+							html += creatTable(index, value);
+						});
+						$("tbody").html(html);
+						$("#loading").fadeOut();
+					} else {
+						getAll();
+					}
+				})
+				.fail((resp) => {
+					$("tbody").html("ไม่มีข้อมูล");
 				});
-			});
+		} else {
+			getAll();
+		}
 	});
 
 	$("#input-status").click(function () {
@@ -238,34 +241,10 @@ function getAll() {
 			if (resp.data) {
 				let html = ``;
 				$.each(resp.data, function (index, value) {
-					let status =
-						value.status == 1
-							? '<span class="badge bg-success" id="status-badge">เปิดใช้งาน</span>'
-							: '<span class="badge bg-danger" id="status-badge">ปิดใช้งาน</span>';
-					html += `
-						<tr>
-              <th class="text-center">${index + 1}</th>
-              <td><img src="../../../assets/image/uploads/${
-								value.photo
-							}" alt=""></td>
-              <td>${value.title}</td>
-              <td>${value.category}</td>
-              <td>${value.price}</td>
-              <td>${value.stock}</td>
-              <td>${status}</td>
-              <td>
-                <a href="#!" id="btn-edit" data-id="${
-									value.id_product
-								}" data-bs-toggle="modal" data-bs-target="#modal_save_product" class="text-secondary me-2"><i class="fas fa-edit"></i></a>
-                <a href="#!" id="btn-delete" data-id="${
-									value.id_product
-								}" class="text-secondary"><i class="fas fa-trash"></i></a>
-              </td>
-            </tr>
-						`;
+					html += creatTable(index, value);
 				});
 				$("tbody").html(html);
-				let totalRows = resp.count.count;
+				let totalRows = resp.data.length;
 				let totalpages = Math.ceil(parseInt(totalRows) / 15);
 				const currentpage = $("#currentpage").val();
 				pagination(totalpages, currentpage);
@@ -281,8 +260,7 @@ function getAll() {
 function getCategory(selected = "", val_category = "") {
 	$.ajax({
 		url: "../../api/product/getCategory.php",
-		type: "GET",
-		data: { action: "getCategory" },
+		type: "GET"
 	})
 		.done((resp) => {
 			if (resp.data) {
@@ -303,4 +281,72 @@ function getCategory(selected = "", val_category = "") {
 		.fail((resp) => {
 			console.log("error" + resp);
 		});
+}
+
+function creatTable(index, value) {
+	let html = ``;
+	let status =
+		value.status == 1
+			? '<span class="badge bg-success" id="status-badge">เปิดใช้งาน</span>'
+			: '<span class="badge bg-danger" id="status-badge">ปิดใช้งาน</span>';
+	html += `
+		<tr>
+      <th class="text-center">${index + 1}</th>
+      <td><img src="../../../assets/image/uploads/${value.photo}" alt=""></td>
+      <td>${value.title}</td>
+      <td>${value.category}</td>
+      <td>${value.price}</td>
+      <td>${value.stock}</td>
+      <td>${status}</td>
+      <td>
+			<a href="#!" id="btn-view" data-id="${
+				value.id_product
+			}" data-bs-toggle="modal" data-bs-target="#modal_view" class="text-secondary me-2"><i class="fas fa-eye"></i></a>
+        <a href="#!" id="btn-edit" data-id="${
+					value.id_product
+				}" data-bs-toggle="modal" data-bs-target="#modal_save_product" class="text-secondary me-2"><i class="fas fa-edit"></i></a>
+        <a href="#!" id="btn-delete" data-id="${
+					value.id_product
+				}" class="text-secondary"><i class="fas fa-trash"></i></a>
+      </td>
+    </tr>
+		`;
+	return html;
+}
+
+function creatModal(value) {
+	let html = ``;
+	html += `
+	<div class="modal-content product_detail">
+      <div class="modal-header">
+        <h5 class="modal-title">รายละเอียดสินค้า</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="card bg-white p-2 p-md-4 mt-3">
+          <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <img src="../../../assets/image/uploads/${value.photo}" class="img-thumbnail img-fluid">
+            </div>
+            <div class="col-lg-6 mt-4 mt-lg-5">
+              <small class="text-muted">สินค้าคงคลัง : ${value.stock}</small>
+              <h3>${value.title}</h3>
+              <p class="text-muted">${value.category}</p>
+              <h4 class="my-4">ราคา ${value.price} บาท</h4>
+              <p class="detail1 mb-4">${value.detail}</p>
+            </div>
+            <div class="detail2 col-lg-11 mt-5">
+              ${value.detail2}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" id="btn-delete" data-id="${value.id_product}" class="text-secondary "><i class="fas fa-trash"></i></a>
+                <a href="#!" id="btn-edit" data-id="${value.id_product}" data-bs-toggle="modal" data-bs-target="#modal_save_product" class="text-secondary ms-3 me-4"><i class="fas fa-edit"></i></a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+	`;
+	return html;
 }

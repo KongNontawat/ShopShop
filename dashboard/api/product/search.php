@@ -1,29 +1,36 @@
 <?php
 header('Content-Type: application/json');
-require_once '../Product.class.php';
-$Obj = new Product();
+require_once '../DB.class.php';
+require_once '../Response.class.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-  $data = $Obj->search($_GET['search']."%");
-  if (!empty($data)) {
-    $response = [
-      'status' => true,
-      'message' => 'Search Success',
-      'data' => $data
-    ];
-    http_response_code(200);
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && !empty($_SESSION['login'])) {
+  $params = [
+    'search' => $_GET['search'] . "%"
+  ];
+  $sql = "SELECT 
+      p.id_product, 
+      p.title,
+      p.id_category,
+      c.title as category,
+      p.detail,
+      p.detail2,
+      p.price,
+      p.status,
+      p.stock,
+      p.photo,
+      p.created_at
+    FROM 
+      product as p
+    LEFT JOIN category as c
+    ON p.id_category = c.id_category
+    WHERE p.title LIKE :search
+    ORDER BY id_product DESC";
+  $query = DB::query($sql, $params);
+  if (!empty($query)) {
+    return Response::success($query, 'Search Success');
   } else {
-    $response = [
-      'status' => false,
-      'message' => 'Search Error'
-    ];
-    http_response_code(402);
+    return Response::error('Not found! Search Error');
   }
 } else {
-  $response = [
-    'status' => false,
-    'message' => 'Method Not Allowed'
-  ];
-  http_response_code(405);
+  return Response::error('Method Not Allowed OR Unauthorized', 405);
 }
-echo json_encode($response);

@@ -93,6 +93,7 @@
 
   <!-- Modal Form Add -->
   <?php include 'modal_add_product.php'; ?>
+  <?php include 'modal_view.php'; ?>
   <?php include '../auth/modal_login.php'; ?>
 
 

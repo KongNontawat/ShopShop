@@ -1,29 +1,18 @@
 <?php
 header('Content-Type: application/json');
-require_once '../Product.class.php';
-$Obj = new Product();
+require_once '../DB.class.php';
+require_once '../Response.class.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-  $postdata = file_get_contents("php://input");
-  $id = json_decode($postdata, true);
-  if ($Obj->delete($id)) {
-    $response = [
-      'status' => true,
-      'message' => 'Delete Success'
-    ];
-    http_response_code(200);
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE' && !empty($_SESSION['login'])) {
+  parse_str(file_get_contents("php://input"), $_DELETE);
+  $params = array('id_product' => $_DELETE['id_product']);
+  $sql = "DELETE FROM product WHERE id_product = :id_product";
+  $query = DB::query($sql, $params);
+  if ($query) {
+    return Response::success($query, 'Delete Success');
   } else {
-    $response = [
-      'status' => false,
-      'message' => 'Delete Error'
-    ];
-    http_response_code(402);
+    return Response::error('Delete Fail', 400);
   }
 } else {
-  $response = [
-    'status' => false,
-    'message' => 'Method Not Allowed'
-  ];
-  http_response_code(405);
+  return Response::error('Method Not Allowed OR Unauthorized', 405);
 }
-echo json_encode($response);

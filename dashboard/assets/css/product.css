@@ -20,15 +20,24 @@ table thead th {
 }
 
 table tbody td #btn-edit i,
-table tbody td #btn-delete i {
+table tbody td #btn-delete i,
+table tbody td #btn-view i,
+.product_detail .modal-footer #btn-edit i,
+.product_detail .modal-footer #btn-delete i {
 	transition: all 0.1s ease-in-out;
 }
 
-table tbody td #btn-edit:hover i {
+table tbody td #btn-edit:hover i,
+.product_detail .modal-footer #btn-edit:hover i {
 	color: var(--warning);
 }
 
-table tbody td #btn-delete:hover i {
+table tbody td #btn-view:hover i {
+	color: var(--info);
+}
+
+table tbody td #btn-delete:hover i,
+.product_detail .modal-footer #btn-delete:hover i {
 	color: var(--danger);
 }
 
@@ -117,12 +126,43 @@ input:checked + .slider .off {
 	display: none;
 }
 
-
 /*--------- END --------*/
 
 /* Rounded sliders */
 .slider.round {
 	border-radius: 34px;
+}
+
+.product_detail .card img.img-thumbnail {
+	object-fit: cover;
+	overflow: hidden;
+	max-height: 40rem;
+	min-height: 30rem;
+	height: 35rem;
+	width: 100%;
+}
+
+.product_detail .card .footer input[type="number"] {
+	width: 6rem;
+}
+
+.product_detail .card .footer .rounded-circle:hover {
+	border: 1px solid red;
+	background-color: red;
+}
+
+.product_detail .card .detail1 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 18;
+	/* number of lines to show */
+	-webkit-box-orient: vertical;
+}
+
+.product_detail .card .detail1,
+.product_detail .card .detail2 {
+	line-height: 1.7rem;
 }
 
 .slider.round:before {
@@ -133,11 +173,17 @@ input:checked + .slider .off {
 		max-width: 300px;
 		max-height: 200px;
 	}
+	.product_detail .card img.img-thumbnail {
+		height: 25rem!important;
+	}
 }
 
 @media (max-width: 320px) {
 	#imgControl #imgUpload {
 		max-width: 140px;
 		max-height: 100px;
+	}
+	.product_detail .card img.img-thumbnail {
+		height: 20rem!important;
 	}
 }
