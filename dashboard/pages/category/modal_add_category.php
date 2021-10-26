@@ -11,7 +11,7 @@
           <div class="row gy-3 justify-content-center m-0">
             <div class="col-12 input-value-category">
               <label for="input-title" class="form-label">ประเภทสินค้า</label>
-              <input type="hidden" name="id_category" id="input-id_category">
+              <input type="hidden" name="id_category" id="input-id-category">
               <input type="text" class="form-control" name="title" id="input-title" placeholder="ชื่อประเภทสินค้า" autofocus>
             </div>
             <div class="col-12 input-value-category">

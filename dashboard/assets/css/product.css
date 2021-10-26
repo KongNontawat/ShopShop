@@ -168,6 +168,18 @@ input:checked + .slider .off {
 .slider.round:before {
 	border-radius: 50%;
 }
+
+.ck-editor__editable {
+  min-height: 200px;
+	border-bottom-left-radius: 0.25rem!important;
+	border-bottom-right-radius: 0.25rem!important;
+}
+
+.ck-toolbar {
+  border-top-left-radius: 0.25rem!important;
+	border-top-right-radius: 0.25rem!important;
+}
+
 @media (max-width: 500px) {
 	#imgControl #imgUpload {
 		max-width: 300px;

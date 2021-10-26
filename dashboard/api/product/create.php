@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_SESSION['login'])) {
       'id_category' => (int)Helper::clean($_POST['id_category']),
       'title' => Helper::clean($_POST['title']),
       'detail' => Helper::clean($_POST['detail']),
-      'detail2' => Helper::clean($_POST['detail2']),
+      'detail2' => $_POST['detail2'],
       'price' => Helper::clean($_POST['price']),
       'stock' => (int)Helper::clean($_POST['stock']),
       'status' => $status,

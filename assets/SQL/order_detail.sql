@@ -2,9 +2,9 @@ CREATE TABLE `shopshop`.`order_detail` (
   `id_detail` INT(8) NOT NULL AUTO_INCREMENT,
   `id_order` INT(8) NOT NULL,
   `id_product` INT(8) NOT NULL,
-  `price` FLOAT(6, 2) NOT NULL,
+  `price` FLOAT(11, 2) NOT NULL,
   `quantity` INT(6) NOT NULL,
-  `subtotal` FLOAT(6, 2) NOT NULL,
+  `subtotal` FLOAT(11, 2) NOT NULL,
   PRIMARY KEY (`id_detail`)
 ) ENGINE = InnoDB;
 ALTER TABLE `order_detail`

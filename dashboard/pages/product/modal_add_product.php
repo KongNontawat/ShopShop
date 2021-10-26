@@ -30,7 +30,7 @@
             </div>
             <div class="col-12">
               <label for="input-detail" class="form-label">คำอธิบาย</label>
-              <textarea name="detail" id="input-detail" cols="30" rows="2" class="form-control" placeholder="ใส่คำอธิบายสินค้า" required></textarea>
+              <textarea name="detail" id="input-detail" cols="30" rows="3" class="form-control" placeholder="ใส่คำอธิบายสินค้า" required></textarea>
             </div>
             <div class="col-md-9">
               <label for="input-photo" class="form-label">รูปภาพ</label>
@@ -47,7 +47,7 @@
             </div>
             <div class="col-12">
               <label for="input-detail2" class="form-label">รายละเอียดสินค้า</label>
-              <textarea name="detail2" id="input-detail2" cols="30" rows="4" class="form-control" placeholder="ใส่รายละเอียดสินค้า" required></textarea>
+              <textarea name="detail2" id="input-detail2" cols="30" rows="4" class="form-control" placeholder="ใส่รายละเอียดสินค้า"></textarea>
             </div>
             <div class="col-12 d-flex flex-row align-items-center justify-content-start">
               <label class="switch me-2">

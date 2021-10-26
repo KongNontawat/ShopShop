@@ -4,7 +4,7 @@ CREATE TABLE `shopshop`.`product` (
   `title` VARCHAR(255) NOT NULL,
   `detail` TEXT NOT NULL,
   `detail2` TEXT NULL,
-  `price` FLOAT(6, 2) NOT NULL,
+  `price` FLOAT(12, 2) NOT NULL,
   `status` INT(2) NOT NULL,
   `stock` INT(6) NULL DEFAULT '0',
   `photo` VARCHAR(255) NOT NULL,

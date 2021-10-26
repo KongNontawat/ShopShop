@@ -1,96 +1,77 @@
+var login = localStorage.getItem("login");
+var role = localStorage.getItem("role");
 $(function () {
-	var login = localStorage.getItem("login");
-	var role = localStorage.getItem("role");
 	if (login !== "login") {
 		$("#modal_login").modal("show");
 	}
 	if (role == "admin") {
 		$("#btn-dashboard").show();
 	} else {
-		$('#btn-dashboard').hide();
+		$("#btn-dashboard").hide();
 	}
 
-		$("#form_register").on("submit", function (e) {
+	$(document).on("submit", "#form_register", function (e) {
 		e.preventDefault();
-		let formData = [];
-		$("#form_register")
-			.find(".input-value-reg")
-			.each(function (i, element) {
-				let inputObj = {};
-				$(element)
-					.find("input")
-					.each(function (index, data) {
-						$.extend(inputObj, { [data.name]: data.value });
-					});
-				formData.push(inputObj);
-			});
+		let formData = new FormData();
+		let serialize = $("#form_register").serializeArray();
+		serialize.forEach(function (item, index) {
+			formData.append(item.name, item.value);
+		});
 		$.ajax({
 			type: "POST",
 			url: "../../api/auth/register.php",
-			data: {data: JSON.stringify(formData)},
+			data: formData,
+			processData: false,
+			contentType: false,
 		})
 			.done((resp) => {
 				$("#modal_register").modal("hide");
-				localStorage.setItem("id_user", resp.data.id_user);
-				localStorage.setItem("username", resp.data.username);
 				localStorage.setItem("role", resp.data.role);
-				localStorage.setItem("photo", resp.data.photo);
 				localStorage.setItem("login", "login");
-				set_profile();
 			})
-			.fail((resp) => {
+			.fail((jqXHR, textStatus, errorThrown) => {
 				$("#alert_register").show();
-				$("#alert_register").text(resp.responseJSON.message);
+				$("#alert_register").text(jqXHR.responseJSON.message);
 			});
 	});
-	
 
-	$("#form_login").on("submit", function (e) {
+	$(document).on("submit", "#form_login", function (e) {
 		e.preventDefault();
-		let formData = [];
-		$("#form_login")
-			.find(".input-value")
-			.each(function (i, element) {
-				let inputObj = {};
-				$(element)
-					.find("input")
-					.each(function (index, data) {
-						$.extend(inputObj, { [data.name]: data.value });
-					});
-				formData.push(inputObj);
-			});
+		let formData = new FormData();
+		let serialize = $("#form_login").serializeArray();
+		serialize.forEach(function (item, index) {
+			formData.append(item.name, item.value);
+		});
+
 		$.ajax({
 			type: "POST",
 			url: "../../api/auth/login.php",
-			data: { data: JSON.stringify(formData) }
+			data: formData,
+			processData: false,
+			contentType: false,
 		})
 			.done((resp) => {
 				$("#modal_login").modal("hide");
-				localStorage.setItem("id_user", resp.data.id_user);
-				localStorage.setItem("username", resp.data.username);
 				localStorage.setItem("role", resp.data.role);
-				localStorage.setItem("photo", resp.data.photo);
 				localStorage.setItem("login", "login");
-				set_profile();
 				if (resp.data.role === "admin") {
 					window.location.href = "../../dashboard/pages/home/";
 				}
+				if (resp.data.role === "user") {
+					$("#btn-dashboard").hide();
+				} else {
+					$("#btn-dashboard").show();
+				}
 			})
-			.fail((resp) => {
+			.fail((jqXHR, textStatus, errorThrown) => {
 				$("#alert_login").show();
-				$("#alert_login").text(resp.responseJSON.message);
+				$("#alert_login").text(jqXHR.responseJSON.message);
 			});
 	});
 
-	$("#btn-logout").on("click", function (e) {
-		e.preventDefault();
+	$("#btn-logout").on("click", function () {
 		localStorage.removeItem("login");
-		localStorage.removeItem("username");
-		localStorage.removeItem("photo");
-		localStorage.removeItem("id_user");
 		localStorage.removeItem("role");
-		$("#nav_username").text('');
-		$("#nav_photo").attr("src", "../../assets/image/default.png");
 		$("#modal_login").modal("show");
 	});
 });

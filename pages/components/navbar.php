@@ -65,7 +65,7 @@
                 <li><a class="dropdown-item" href="../profile/change_password.php"><i class="fas fa-key me-1"></i>เปลี่ยนรหัส</a></li>
                 <li><a class="dropdown-item" href="../profile/order.php"><i class="fas fa-shopping-cart me-1"></i>การสั่งซื้อ</a></li>
                 <li><a class="dropdown-item" href="../profile/order_history.php"><i class="far fa-list-alt me-1"></i></i>ประวัติการสั่งซื้อ</a></li>
-                <li><a class="dropdown-item text-danger" id="btn-logout" href="#"><i class="fas fa-sign-out-alt me-1"></i>ออกจากระบบ</a>
+                <li><a class="dropdown-item text-danger" id="btn-logout" href="../auth/logout.php"><i class="fas fa-sign-out-alt me-1"></i>ออกจากระบบ</a>
                 </li>
               </ul>
             </div>

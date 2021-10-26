@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +16,8 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+  <!-- CK Editor -->
+  <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
   <!-- Style -->
   <link rel="stylesheet" href="../../assets/css/main.css">
   <link rel="stylesheet" href="../../assets/css/product.css">
@@ -70,11 +73,11 @@
                     <th class="text-center" style="width: 5%;">#</th>
                     <th style="width: 15%;">รูป</th>
                     <th style="width: 20%;">ชื่อสินค้า</th>
-                    <th style="width: 18%;">ประเภท</th>
+                    <th style="width: 17%;">ประเภท</th>
                     <th style="width: 12%;">ราคา</th>
-                    <th style="width: 10%;">สต๊อก</th>
-                    <th style="width: 10%;">สถานะ</th>
-                    <th style="width: 10%;">จัดการ</th>
+                    <th style="width: 9%;">สต๊อก</th>
+                    <th style="width: 9%;">สถานะ</th>
+                    <th style="width: 13%;">จัดการ</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -94,7 +97,7 @@
   <!-- Modal Form Add -->
   <?php include 'modal_add_product.php'; ?>
   <?php include 'modal_view.php'; ?>
-  <?php include '../auth/modal_login.php'; ?>
+  <?php include '../auth/check_auth.php'; ?>
 
 
   <!-- Bootstrap 5 Bundle with Popper -->

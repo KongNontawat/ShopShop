@@ -2,7 +2,7 @@ CREATE TABLE `shopshop`.`category`(
   `id_category` INT(8) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(255) NOT NULL,
   `detail` TEXT NOT NULL,
-  `created_at` DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_category`)
 ) ENGINE = InnoDB;
 

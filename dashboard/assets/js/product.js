@@ -1,4 +1,4 @@
-var selectedFile;
+var selectedFile, MyEditor;
 function onFileSelected(input) {
 	selectedFile = input.files[0];
 	if (selectedFile) {
@@ -18,14 +18,45 @@ $(function () {
 	$("#sidebar_product").addClass("active");
 	$("#loading").show();
 	getAll();
+
+	ClassicEditor.create(document.querySelector("#input-detail2"), {
+		toolbar: {
+			items: [
+				"heading",
+				"|",
+				"bold",
+				"italic",
+				"link",
+				"|",
+				"outdent",
+				"indent",
+				"|",
+				"numberedList",
+				"bulletedList",
+				"|",
+				"blockQuote",
+				"|",
+				"undo",
+				"redo",
+			],
+			shouldNotGroupWhenFull: true,
+		},
+	})
+		.then((editor) => {
+			window.editor = editor;
+			myEditor = editor;
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+
 	$(document).on("click", "a#btn-edit", function (e) {
 		e.preventDefault();
 		var id = $(this).data("id");
-
 		$.ajax({
-			url: "../../api/product/getEdit.php",
+			url: "../../api/product/show.php",
 			type: "GET",
-			data: { id_product: id},
+			data: { id_product: id },
 		})
 			.done((resp) => {
 				$("#input-id-product").val(resp.data.id_product);
@@ -34,7 +65,7 @@ $(function () {
 				$("#input-price").val(resp.data.price);
 				$("#input-stock").val(resp.data.stock);
 				$("#input-detail").val(resp.data.detail);
-				$("#input-detail2").val(resp.data.detail2);
+				myEditor.setData(resp.data.detail2);
 				$("#input-photo").val("");
 				selectedFile = "";
 				$("#photo_old").val(resp.data.photo);
@@ -54,23 +85,22 @@ $(function () {
 					$("#label-status").text("ปิดใช้งาน");
 				}
 			})
-			.fail((resp) => {
+			.fail((jqXHR, textStatus, errorThrown) => {
 				Swal.fire({
 					icon: "error",
 					title: "เรียกดูข้อมูลไม่สำเร็จ",
 					text: "ผิดพลาด เรียกดูข้อมูลไม่สำเร็จ",
-					footer: resp.responseJSON.message,
+					footer: jqXHR.responseJSON.message,
 				});
 			});
 	});
 
 	$(document).on("click", "a#btn-view", function (e) {
 		var id = $(this).data("id");
-
 		$.ajax({
-			url: "../../api/product/getEdit.php",
+			url: "../../api/product/show.php",
 			type: "GET",
-			data: { id: id, action: "getEdit" },
+			data: { id_product: id },
 		})
 			.done((resp) => {
 				if (resp.data) {
@@ -80,8 +110,8 @@ $(function () {
 					$("#loading").fadeOut();
 				}
 			})
-			.fail((resp) => {
-				console.log("error" + resp);
+			.fail((jqXHR, textStatus, errorThrown) => {
+				console.log("error" + jqXHR);
 			});
 	});
 
@@ -111,24 +141,24 @@ $(function () {
 							showConfirmButton: false,
 							timer: 1600,
 						});
-						$('#modal_view').modal('hide');
+						$("#modal_view").modal("hide");
 						getAll();
 					})
-					.fail((resp) => {
+					.fail((jqXHR, textStatus, errorThrown) => {
 						Swal.fire({
 							icon: "error",
 							title: "ลบไม่สำเร็จ",
 							text: "ผิดพลาด ลบข้อมูลไม่สำเร็จ",
-							footer: resp.responseJSON.message,
+							footer: jqXHR.responseJSON.message,
 						});
 					});
 			}
 		});
 	});
 
-	$("#form-add-product").submit((e) => {
+	$(document).on("submit", "#form-add-product", function (e) {
 		e.preventDefault();
-		let endPoint = "save_form.php";
+		let endPoint = "create.php";
 		let formData = new FormData();
 		let serialize = $("#form-add-product").serializeArray();
 		serialize.forEach(function (item, index) {
@@ -158,7 +188,8 @@ $(function () {
 				Swal.fire({
 					icon: "error",
 					title: "บันทึกข้อมูลไม่สำเร็จ",
-					showConfirmButton: false,
+					showConfirmButton: true,
+					text: jqXHR.responseJSON.message,
 					timer: 1600,
 				});
 			});
@@ -168,14 +199,13 @@ $(function () {
 		e.preventDefault();
 		var $this = $(this);
 		const pagenum = $this.data("page");
-		console.log(pagenum);
 		$("#currentpage").val(pagenum);
 		getAll();
 		$this.parent().siblings().removeClass("active");
 		$this.parent().addClass("active");
 	});
 
-	$("#btn-show-modal-product").click((e) => {
+	$(document).on("click", "#btn-show-modal-product", function (e) {
 		e.preventDefault();
 		getCategory("selected");
 		let form = $("#form-add-product");
@@ -183,17 +213,19 @@ $(function () {
 		setTimeout(function () {
 			$("#input-title").focus();
 		}, 500);
+		$("#input-id-product").val("");
 		$("#input-status").attr("checked", true);
 		$("#imgUpload").attr("src", "");
 		$("#imgControl").addClass("d-none").removeClass("d-block");
 		$("#label-status").css("color", "#198754");
 		$("#label-status").text("เปิดใช้งาน");
+		myEditor.setData("");
 	});
 
-	$(document).on("keyup", "input#search_product", function (e) {
+	$(document).on("keyup", "#search_product", function (e) {
 		e.preventDefault();
 		var data = $(this).val();
-		if (data.length > 1) {
+		if (data.length > 0) {
 			$.ajax({
 				url: "../../api/product/search.php",
 				type: "GET",
@@ -203,23 +235,30 @@ $(function () {
 					if (resp.data) {
 						let html = ``;
 						$.each(resp.data, function (index, value) {
-							html += creatTable(index, value);
+							html += createTable(index, value);
 						});
 						$("tbody").html(html);
 						$("#loading").fadeOut();
+						$('#pagination').hide();
 					} else {
 						getAll();
+						$('#pagination').hide();
 					}
 				})
-				.fail((resp) => {
-					$("tbody").html("ไม่มีข้อมูล");
+				.fail((jqXHR, textStatus, errorThrown) => {
+					$("tbody").html(
+						"<tr><td colspan='8' class='text-center text-danger'>ไม่เจอข้อมูลเลยอ่ะ ทำไงดีน๊าา...</td></tr>"
+					);
+					console.log("Error" + jqXHR + textStatus + errorThrown);
+					$("#pagination").hide();
 				});
 		} else {
 			getAll();
+			$("#pagination").show();
 		}
 	});
 
-	$("#input-status").click(function () {
+	$(document).on("click", "#input-status", function () {
 		if ($(this).prop("checked") == true) {
 			$("#label-status").css("color", "#198754");
 			$("#label-status").text("เปิดใช้งาน");
@@ -235,16 +274,16 @@ function getAll() {
 	$.ajax({
 		url: "../../api/product/getAll.php",
 		type: "GET",
-		data: { action: "getAll", page: pageno },
+		data: { page: pageno },
 	})
 		.done((resp) => {
 			if (resp.data) {
 				let html = ``;
 				$.each(resp.data, function (index, value) {
-					html += creatTable(index, value);
+					html += createTable(index, value);
 				});
 				$("tbody").html(html);
-				let totalRows = resp.data.length;
+				let totalRows = resp.count[0].count;
 				let totalpages = Math.ceil(parseInt(totalRows) / 15);
 				const currentpage = $("#currentpage").val();
 				pagination(totalpages, currentpage);
@@ -252,15 +291,15 @@ function getAll() {
 				$("#modal_save_product").modal("hide");
 			}
 		})
-		.fail((resp) => {
-			console.log("error" + resp);
+		.fail((jqXHR, textStatus, errorThrown) => {
+			console.log("error" + jqXHR + textStatus + errorThrown);
 		});
 }
 
 function getCategory(selected = "", val_category = "") {
 	$.ajax({
 		url: "../../api/product/getCategory.php",
-		type: "GET"
+		type: "GET",
 	})
 		.done((resp) => {
 			if (resp.data) {
@@ -283,7 +322,7 @@ function getCategory(selected = "", val_category = "") {
 		});
 }
 
-function creatTable(index, value) {
+function createTable(index, value) {
 	let html = ``;
 	let status =
 		value.status == 1

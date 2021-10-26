@@ -1,3 +1,4 @@
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand navbar-dark bg-dark px-2 px-lg-4 fixed-top">
   <div class="container-fluid">
@@ -17,7 +18,7 @@
           <ul class="dropdown-menu dropdown-menu-end mt-2" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="../profile/"><i class="fas fa-user-edit me-1"></i>โปรไฟล์</a></li>
             <li><a class="dropdown-item" href="../profile/change_password.php"><i class="fas fa-home me-1"></i>ไปที่หน้าเว็บ</a></li>
-            <li><a class="dropdown-item text-danger" id="nav-logout" href="#"><i class="fas fa-sign-out-alt me-1"></i>ออกจากระบบ</a>
+            <li><a class="dropdown-item text-danger" id="nav-logout" href="../auth/logout.php"><i class="fas fa-sign-out-alt me-1"></i>ออกจากระบบ</a>
           </ul>
         </li>
       </ul>

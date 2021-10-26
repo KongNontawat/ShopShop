@@ -1,5 +1,4 @@
 $(function () {
-	set_profile();
 	var btn = $("#BackToTop");
 	$(window).scroll(function () {
 		if ($(window).scrollTop() > 300) {
@@ -32,16 +31,4 @@ function readURL(input) {
 	}
 }
 
-function set_profile() {
-	let id_user = localStorage.getItem('id_user');
-	let username = localStorage.getItem('username');
-	let role = localStorage.getItem('role');
-	let photo = localStorage.getItem('photo');
-	let login = localStorage.getItem('login');
-	if(photo == 'null') {
-  	photo = 'default.png'
-	}
-	$('#nav_username').text(username);
-	$('#nav_photo').attr('src','../../assets/image/' + photo);
-}
 

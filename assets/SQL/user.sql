@@ -1,3 +1,7 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 CREATE TABLE `shopshop`.`user` (
   `id_user` INT(8) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(120) NOT NULL,
